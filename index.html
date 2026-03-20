@@ -1,0 +1,1355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Flair Network Systems — Top IT Infrastructure Company India</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <style>
+    :root {
+      --blue: #0066FF;
+      --cyan: #00D4FF;
+      --dark: #020814;
+      --darker: #010610;
+      --card: rgba(255,255,255,0.04);
+      --border: rgba(0,212,255,0.15);
+      --text: #e2e8f0;
+      --muted: #94a3b8;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--dark);
+      color: var(--text);
+      overflow-x: hidden;
+    }
+
+    /* ── CANVAS ── */
+    #bg-canvas {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 60px;
+      background: rgba(2,8,20,0.7);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+      transition: all 0.3s;
+    }
+    .logo {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 22px;
+      font-weight: 700;
+      background: linear-gradient(135deg, #fff 0%, var(--cyan) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      letter-spacing: -0.5px;
+    }
+    .logo span { color: var(--cyan); -webkit-text-fill-color: var(--cyan); }
+    .nav-links { display: flex; gap: 36px; list-style: none; }
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+      transition: color 0.2s;
+      letter-spacing: 0.3px;
+    }
+    .nav-links a:hover { color: var(--cyan); }
+    .nav-cta {
+      background: linear-gradient(135deg, var(--blue), var(--cyan));
+      color: #fff;
+      border: none;
+      padding: 10px 24px;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .nav-cta:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 8px 30px rgba(0,102,255,0.4);
+    }
+
+    /* ── SECTIONS ── */
+    section { position: relative; z-index: 1; }
+
+    /* ── HERO ── */
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 120px 20px 80px;
+      overflow: hidden;
+    }
+    .hero-inner { max-width: 900px; }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(0,212,255,0.1);
+      border: 1px solid rgba(0,212,255,0.3);
+      border-radius: 100px;
+      padding: 6px 18px;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--cyan);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 28px;
+    }
+    .hero-badge::before {
+      content: '';
+      width: 6px; height: 6px;
+      background: var(--cyan);
+      border-radius: 50%;
+      animation: pulse-dot 2s infinite;
+    }
+    @keyframes pulse-dot {
+      0%,100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(1.5); }
+    }
+    h1 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(42px, 7vw, 88px);
+      font-weight: 800;
+      line-height: 1.05;
+      letter-spacing: -2px;
+      margin-bottom: 24px;
+    }
+    h1 .grad {
+      background: linear-gradient(135deg, #fff 20%, var(--cyan) 60%, var(--blue) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .hero-sub {
+      font-size: 18px;
+      color: var(--muted);
+      max-width: 620px;
+      margin: 0 auto 44px;
+      line-height: 1.7;
+      font-weight: 400;
+    }
+    .hero-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+    .btn-primary {
+      background: linear-gradient(135deg, var(--blue), var(--cyan));
+      color: #fff;
+      border: none;
+      padding: 16px 36px;
+      border-radius: 10px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s;
+      text-decoration: none;
+      display: inline-block;
+    }
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 20px 50px rgba(0,102,255,0.5);
+    }
+    .btn-outline {
+      background: transparent;
+      color: var(--text);
+      border: 1px solid var(--border);
+      padding: 16px 36px;
+      border-radius: 10px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s;
+      text-decoration: none;
+      display: inline-block;
+    }
+    .btn-outline:hover {
+      border-color: var(--cyan);
+      color: var(--cyan);
+      background: rgba(0,212,255,0.05);
+    }
+    .hero-stats {
+      display: flex;
+      gap: 48px;
+      justify-content: center;
+      margin-top: 72px;
+      flex-wrap: wrap;
+    }
+    .stat { text-align: center; }
+    .stat-num {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 42px;
+      font-weight: 800;
+      background: linear-gradient(135deg, #fff, var(--cyan));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      line-height: 1;
+    }
+    .stat-label { font-size: 13px; color: var(--muted); margin-top: 6px; font-weight: 500; letter-spacing: 0.5px; }
+
+    /* ── SCROLL INDICATOR ── */
+    .scroll-indicator {
+      position: absolute;
+      bottom: 40px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      color: var(--muted);
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      animation: bounce 2s infinite;
+    }
+    .scroll-indicator::after {
+      content: '';
+      width: 1px;
+      height: 40px;
+      background: linear-gradient(to bottom, var(--cyan), transparent);
+    }
+    @keyframes bounce {
+      0%,100% { transform: translateX(-50%) translateY(0); }
+      50% { transform: translateX(-50%) translateY(8px); }
+    }
+
+    /* ── MARQUEE ── */
+    .marquee-wrap {
+      padding: 20px 0;
+      background: rgba(0,212,255,0.04);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      overflow: hidden;
+    }
+    .marquee-track {
+      display: flex;
+      gap: 60px;
+      white-space: nowrap;
+      animation: marquee 30s linear infinite;
+    }
+    .marquee-item {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--muted);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .marquee-item::after {
+      content: '◆';
+      color: var(--cyan);
+      font-size: 8px;
+    }
+    @keyframes marquee {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* ── SECTIONS COMMON ── */
+    .section-header {
+      text-align: center;
+      margin-bottom: 70px;
+    }
+    .section-tag {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--cyan);
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+    h2 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(32px, 4vw, 52px);
+      font-weight: 800;
+      letter-spacing: -1px;
+      line-height: 1.1;
+      margin-bottom: 16px;
+    }
+    .section-desc {
+      color: var(--muted);
+      font-size: 17px;
+      max-width: 560px;
+      margin: 0 auto;
+      line-height: 1.7;
+    }
+
+    /* ── SERVICES ── */
+    #services {
+      padding: 120px 60px;
+    }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 24px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .service-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 36px;
+      transition: all 0.4s cubic-bezier(0.175,0.885,0.32,1.275);
+      position: relative;
+      overflow: hidden;
+      cursor: default;
+    }
+    .service-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 50% 0%, rgba(0,212,255,0.08) 0%, transparent 70%);
+      opacity: 0;
+      transition: opacity 0.4s;
+    }
+    .service-card:hover::before { opacity: 1; }
+    .service-card:hover {
+      border-color: rgba(0,212,255,0.4);
+      transform: translateY(-8px);
+      box-shadow: 0 30px 60px rgba(0,0,0,0.4), 0 0 40px rgba(0,212,255,0.08);
+    }
+    .service-icon {
+      width: 56px; height: 56px;
+      background: linear-gradient(135deg, rgba(0,102,255,0.2), rgba(0,212,255,0.2));
+      border: 1px solid rgba(0,212,255,0.3);
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 26px;
+      margin-bottom: 24px;
+    }
+    .service-card h3 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 12px;
+      letter-spacing: -0.3px;
+    }
+    .service-card p {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.7;
+    }
+    .service-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 20px;
+    }
+    .tag {
+      background: rgba(0,212,255,0.08);
+      border: 1px solid rgba(0,212,255,0.2);
+      color: var(--cyan);
+      font-size: 11px;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 100px;
+      letter-spacing: 0.5px;
+    }
+
+    /* ── ABOUT ── */
+    #about {
+      padding: 120px 60px;
+      background: rgba(0,102,255,0.02);
+    }
+    .about-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+    .about-visual {
+      position: relative;
+      height: 480px;
+    }
+    #about-canvas {
+      width: 100%; height: 100%;
+      border-radius: 20px;
+      overflow: hidden;
+    }
+    .about-content h2 { text-align: left; margin-bottom: 20px; }
+    .about-content p {
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.8;
+      margin-bottom: 20px;
+    }
+    .about-quote {
+      background: var(--card);
+      border-left: 3px solid var(--cyan);
+      border-radius: 0 12px 12px 0;
+      padding: 20px 24px;
+      margin: 28px 0;
+      font-style: italic;
+      color: var(--text);
+      font-size: 15px;
+      line-height: 1.7;
+    }
+    .about-quote cite {
+      display: block;
+      margin-top: 10px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--cyan);
+      font-style: normal;
+    }
+    .about-certs {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 28px;
+    }
+    .cert-badge {
+      background: rgba(0,212,255,0.08);
+      border: 1px solid rgba(0,212,255,0.25);
+      border-radius: 10px;
+      padding: 10px 18px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--cyan);
+    }
+
+    /* ── WHY US ── */
+    #why {
+      padding: 120px 60px;
+    }
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .why-card {
+      text-align: center;
+      padding: 40px 24px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      transition: all 0.3s;
+    }
+    .why-card:hover {
+      border-color: rgba(0,212,255,0.3);
+      transform: translateY(-6px);
+      box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+    }
+    .why-num {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 48px;
+      font-weight: 800;
+      background: linear-gradient(135deg, #fff, var(--cyan));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+    .why-card h3 {
+      font-size: 15px;
+      font-weight: 700;
+      margin-bottom: 10px;
+      letter-spacing: -0.2px;
+    }
+    .why-card p { color: var(--muted); font-size: 13px; line-height: 1.6; }
+
+    /* ── INDUSTRIES ── */
+    #industries {
+      padding: 120px 60px;
+      background: rgba(0,102,255,0.02);
+    }
+    .industries-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 16px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    .industry-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 28px 20px;
+      text-align: center;
+      transition: all 0.3s;
+      cursor: default;
+    }
+    .industry-card:hover {
+      border-color: rgba(0,212,255,0.4);
+      background: rgba(0,212,255,0.06);
+      transform: scale(1.04);
+    }
+    .industry-icon { font-size: 32px; margin-bottom: 12px; }
+    .industry-card span {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text);
+      letter-spacing: 0.3px;
+    }
+
+    /* ── PROCESS ── */
+    #process {
+      padding: 120px 60px;
+    }
+    .process-steps {
+      display: flex;
+      gap: 0;
+      max-width: 1100px;
+      margin: 0 auto;
+      position: relative;
+    }
+    .process-steps::before {
+      content: '';
+      position: absolute;
+      top: 32px;
+      left: 5%;
+      right: 5%;
+      height: 2px;
+      background: linear-gradient(to right, transparent, var(--cyan), transparent);
+    }
+    .process-step {
+      flex: 1;
+      text-align: center;
+      padding: 20px;
+      position: relative;
+    }
+    .step-num {
+      width: 64px; height: 64px;
+      background: linear-gradient(135deg, var(--blue), var(--cyan));
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 22px;
+      font-weight: 800;
+      margin: 0 auto 20px;
+      box-shadow: 0 0 30px rgba(0,212,255,0.4);
+    }
+    .process-step h3 {
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 10px;
+      letter-spacing: -0.2px;
+    }
+    .process-step p { color: var(--muted); font-size: 13px; line-height: 1.6; }
+
+    /* ── TESTIMONIALS ── */
+    #testimonials {
+      padding: 120px 60px;
+      background: rgba(0,102,255,0.02);
+    }
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .testimonial-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 32px;
+      transition: all 0.3s;
+    }
+    .testimonial-card:hover {
+      border-color: rgba(0,212,255,0.3);
+      transform: translateY(-4px);
+    }
+    .stars { color: #FFB800; font-size: 14px; margin-bottom: 16px; letter-spacing: 2px; }
+    .testimonial-card p {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.8;
+      margin-bottom: 24px;
+      font-style: italic;
+    }
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .author-avatar {
+      width: 44px; height: 44px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--blue), var(--cyan));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      font-weight: 800;
+      flex-shrink: 0;
+    }
+    .author-name { font-size: 14px; font-weight: 700; }
+    .author-role { font-size: 12px; color: var(--muted); margin-top: 2px; }
+
+    /* ── CTA ── */
+    #cta {
+      padding: 120px 60px;
+      text-align: center;
+    }
+    .cta-box {
+      max-width: 760px;
+      margin: 0 auto;
+      background: linear-gradient(135deg, rgba(0,102,255,0.12), rgba(0,212,255,0.08));
+      border: 1px solid rgba(0,212,255,0.25);
+      border-radius: 28px;
+      padding: 72px 60px;
+      position: relative;
+      overflow: hidden;
+    }
+    .cta-box::before {
+      content: '';
+      position: absolute;
+      top: -50%; left: -50%;
+      width: 200%; height: 200%;
+      background: radial-gradient(circle, rgba(0,212,255,0.05) 0%, transparent 60%);
+      animation: rotate-glow 10s linear infinite;
+    }
+    @keyframes rotate-glow {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    .cta-box h2 { margin-bottom: 16px; position: relative; z-index: 1; }
+    .cta-box p { color: var(--muted); font-size: 17px; margin-bottom: 40px; position: relative; z-index: 1; }
+    .cta-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; position: relative; z-index: 1; }
+
+    /* ── FOOTER ── */
+    footer {
+      padding: 60px;
+      border-top: 1px solid var(--border);
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 48px;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+    .footer-brand .logo { font-size: 20px; margin-bottom: 16px; display: block; }
+    .footer-brand p { color: var(--muted); font-size: 14px; line-height: 1.7; max-width: 280px; }
+    .footer-col h4 {
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--cyan);
+      margin-bottom: 20px;
+    }
+    .footer-col a {
+      display: block;
+      color: var(--muted);
+      font-size: 14px;
+      text-decoration: none;
+      margin-bottom: 12px;
+      transition: color 0.2s;
+    }
+    .footer-col a:hover { color: var(--text); }
+    .footer-bottom {
+      border-top: 1px solid var(--border);
+      padding: 24px 60px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    /* ── CUSTOM CURSOR ── */
+    .cursor {
+      width: 12px; height: 12px;
+      background: var(--cyan);
+      border-radius: 50%;
+      position: fixed;
+      pointer-events: none;
+      z-index: 9999;
+      transition: transform 0.1s;
+      mix-blend-mode: difference;
+    }
+    .cursor-ring {
+      width: 36px; height: 36px;
+      border: 1.5px solid rgba(0,212,255,0.6);
+      border-radius: 50%;
+      position: fixed;
+      pointer-events: none;
+      z-index: 9998;
+      transition: all 0.15s ease-out;
+    }
+
+    /* ── SCROLL PROGRESS ── */
+    #progress-bar {
+      position: fixed;
+      top: 0; left: 0;
+      height: 3px;
+      background: linear-gradient(to right, var(--blue), var(--cyan));
+      z-index: 200;
+      width: 0%;
+      transition: width 0.1s;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      nav { padding: 16px 24px; }
+      .nav-links { display: none; }
+      #services, #about, #why, #industries, #process, #testimonials, #cta { padding: 80px 24px; }
+      footer { padding: 40px 24px; grid-template-columns: 1fr 1fr; }
+      .footer-bottom { padding: 20px 24px; flex-direction: column; gap: 8px; }
+      .about-inner { grid-template-columns: 1fr; }
+      .about-visual { height: 280px; }
+      .why-grid { grid-template-columns: repeat(2, 1fr); }
+      .testimonials-grid { grid-template-columns: 1fr; }
+      .process-steps { flex-direction: column; }
+      .process-steps::before { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Cursor -->
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursor-ring"></div>
+
+<!-- Progress Bar -->
+<div id="progress-bar"></div>
+
+<!-- Background Canvas -->
+<canvas id="bg-canvas"></canvas>
+
+<!-- Nav -->
+<nav id="navbar">
+  <div class="logo">Flair<span>NS</span></div>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#why">Why Us</a></li>
+    <li><a href="#industries">Industries</a></li>
+    <li><a href="#testimonials">Clients</a></li>
+    <li><a href="#cta">Contact</a></li>
+  </ul>
+  <button class="nav-cta" onclick="document.getElementById('cta').scrollIntoView({behavior:'smooth'})">Get a Quote</button>
+</nav>
+
+<!-- Hero -->
+<section id="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">🇮🇳 India's Leading IT Infrastructure Partner</div>
+    <h1>
+      <span class="grad">Connecting Businesses</span><br/>
+      to the Future
+    </h1>
+    <p class="hero-sub">
+      Enterprise-grade network cabling, data centre, SD-WAN, structured cabling, Wi-Fi, 
+      security surveillance and ServiceNow solutions — built for scale, secured for tomorrow.
+    </p>
+    <div class="hero-btns">
+      <a class="btn-primary" href="#services">Explore Services</a>
+      <a class="btn-outline" href="#cta">Talk to an Expert</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat">
+        <div class="stat-num" data-target="200000">0</div>
+        <div class="stat-label">Connections Deployed</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num" data-target="70">0</div>
+        <div class="stat-label">Happy Clients</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num" data-target="20">0</div>
+        <div class="stat-label">Years Experience</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num" data-target="99">0</div>
+        <div class="stat-label">% Uptime Guarantee</div>
+      </div>
+    </div>
+  </div>
+  <div class="scroll-indicator">Scroll</div>
+</section>
+
+<!-- Marquee -->
+<div class="marquee-wrap">
+  <div class="marquee-track">
+    <span class="marquee-item">Structured Cabling</span>
+    <span class="marquee-item">Data Centre Solutions</span>
+    <span class="marquee-item">SD-WAN</span>
+    <span class="marquee-item">Wi-Fi Infrastructure</span>
+    <span class="marquee-item">ServiceNow Consultancy</span>
+    <span class="marquee-item">Security & Surveillance</span>
+    <span class="marquee-item">Audio Visual Systems</span>
+    <span class="marquee-item">IT Infrastructure Audits</span>
+    <span class="marquee-item">Active Networking</span>
+    <span class="marquee-item">Passive Networking</span>
+    <!-- duplicate for seamless loop -->
+    <span class="marquee-item">Structured Cabling</span>
+    <span class="marquee-item">Data Centre Solutions</span>
+    <span class="marquee-item">SD-WAN</span>
+    <span class="marquee-item">Wi-Fi Infrastructure</span>
+    <span class="marquee-item">ServiceNow Consultancy</span>
+    <span class="marquee-item">Security & Surveillance</span>
+    <span class="marquee-item">Audio Visual Systems</span>
+    <span class="marquee-item">IT Infrastructure Audits</span>
+    <span class="marquee-item">Active Networking</span>
+    <span class="marquee-item">Passive Networking</span>
+  </div>
+</div>
+
+<!-- Services -->
+<section id="services">
+  <div class="section-header">
+    <span class="section-tag">What We Do</span>
+    <h2>End-to-End IT Infrastructure Solutions</h2>
+    <p class="section-desc">From the cable in the wall to the cloud above — we design, deploy, and manage it all.</p>
+  </div>
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="service-icon">🔌</div>
+      <h3>Structured Cabling</h3>
+      <p>Certified enterprise-grade cabling infrastructure for voice, video, and data communications ensuring seamless connectivity across your facility.</p>
+      <div class="service-tags">
+        <span class="tag">Cat6A/Cat7</span>
+        <span class="tag">Fibre Optic</span>
+        <span class="tag">Data Centres</span>
+      </div>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🖧</div>
+      <h3>Active Networking</h3>
+      <p>Enterprise switches, routers and wireless LAN infrastructure from Cisco, Aruba, HP and Fortinet for high-performance enterprise environments.</p>
+      <div class="service-tags">
+        <span class="tag">Cisco</span>
+        <span class="tag">Aruba</span>
+        <span class="tag">Fortinet</span>
+      </div>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">☁️</div>
+      <h3>SD-WAN</h3>
+      <p>Software-defined wide area networks that optimise traffic, reduce costs and provide centralised visibility across branch offices.</p>
+      <div class="service-tags">
+        <span class="tag">Multi-Cloud</span>
+        <span class="tag">Zero Trust</span>
+        <span class="tag">QoS</span>
+      </div>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🏢</div>
+      <h3>Data Centre Infrastructure</h3>
+      <p>Design, build and managed services for data centres — from hot-aisle containment to power distribution and cooling systems.</p>
+      <div class="service-tags">
+        <span class="tag">Colocation</span>
+        <span class="tag">AMC</span>
+        <span class="tag">DR Planning</span>
+      </div>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">📡</div>
+      <h3>Wi-Fi Solutions</h3>
+      <p>High-density wireless networks with seamless roaming, BYOD support and granular access policies for corporate and campus environments.</p>
+      <div class="service-tags">
+        <span class="tag">Wi-Fi 6/6E</span>
+        <span class="tag">Site Survey</span>
+        <span class="tag">BYOD</span>
+      </div>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🔐</div>
+      <h3>Security & Surveillance</h3>
+      <p>IP CCTV, access control, intrusion detection and VMS platforms integrated with your IT infrastructure for unified security management.</p>
+      <div class="service-tags">
+        <span class="tag">IP CCTV</span>
+        <span class="tag">Access Control</span>
+        <span class="tag">VMS</span>
+      </div>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🎥</div>
+      <h3>Audio Visual Systems</h3>
+      <p>Boardroom AV, digital signage, training room integration and unified communications with 100% uptime SLA and remote management.</p>
+      <div class="service-tags">
+        <span class="tag">Boardrooms</span>
+        <span class="tag">Training Rooms</span>
+        <span class="tag">Signage</span>
+      </div>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">⚙️</div>
+      <h3>ServiceNow Consultancy</h3>
+      <p>ITSM, ITOM and CSM implementations, integrations and managed services to streamline your IT service delivery and operations.</p>
+      <div class="service-tags">
+        <span class="tag">ITSM</span>
+        <span class="tag">ITOM</span>
+        <span class="tag">CSM</span>
+      </div>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🔍</div>
+      <h3>IT Infrastructure Audits</h3>
+      <p>Comprehensive assessments of your current IT environment identifying risks, performance gaps and a clear roadmap for improvement.</p>
+      <div class="service-tags">
+        <span class="tag">Risk Assessment</span>
+        <span class="tag">Gap Analysis</span>
+        <span class="tag">Roadmap</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- About -->
+<section id="about">
+  <div class="about-inner">
+    <div class="about-visual">
+      <canvas id="about-canvas"></canvas>
+    </div>
+    <div class="about-content">
+      <span class="section-tag">About Flair NS</span>
+      <h2>Built on Trust, Delivered with Precision</h2>
+      <p>
+        Flair Network Systems is a premier IT infrastructure company headquartered in India. 
+        We specialise in passive networking, telecommunications, and enterprise technology solutions 
+        that form the backbone of modern business.
+      </p>
+      <p>
+        With two decades of experience, we've helped organisations across banking, healthcare, 
+        manufacturing, and government build IT environments they can depend on — today and into the future.
+      </p>
+      <blockquote class="about-quote">
+        "Technology is the foundation of every modern business, and its reliability plays a critical 
+        role in performance, security, and growth."
+        <cite>— Satish Kondalkar, Founder &amp; CEO</cite>
+      </blockquote>
+      <div class="about-certs">
+        <span class="cert-badge">ISO 9001:2015</span>
+        <span class="cert-badge">Cisco Partner</span>
+        <span class="cert-badge">Aruba Certified</span>
+        <span class="cert-badge">Panduit Certified</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Why Us -->
+<section id="why">
+  <div class="section-header">
+    <span class="section-tag">Why Choose Us</span>
+    <h2>The Flair Difference</h2>
+    <p class="section-desc">Numbers that speak to our commitment to excellence and delivery.</p>
+  </div>
+  <div class="why-grid">
+    <div class="why-card">
+      <div class="why-num">200K+</div>
+      <h3>Connections Deployed</h3>
+      <p>Proven at scale across enterprise data centres and campuses.</p>
+    </div>
+    <div class="why-card">
+      <div class="why-num">70+</div>
+      <h3>Happy Clients</h3>
+      <p>Long-term partnerships built on reliability and trust.</p>
+    </div>
+    <div class="why-card">
+      <div class="why-num">20+</div>
+      <h3>Years of Expertise</h3>
+      <p>Deep industry knowledge across every vertical we serve.</p>
+    </div>
+    <div class="why-card">
+      <div class="why-num">99.9%</div>
+      <h3>Uptime Delivered</h3>
+      <p>Mission-critical infrastructure that never lets you down.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Industries -->
+<section id="industries">
+  <div class="section-header">
+    <span class="section-tag">Industries We Serve</span>
+    <h2>Trusted Across Every Sector</h2>
+    <p class="section-desc">From banks to hospitals, we power the infrastructure that keeps critical operations running.</p>
+  </div>
+  <div class="industries-grid">
+    <div class="industry-card"><div class="industry-icon">🏦</div><span>Banking &amp; Finance</span></div>
+    <div class="industry-card"><div class="industry-icon">🏥</div><span>Healthcare</span></div>
+    <div class="industry-card"><div class="industry-icon">🏭</div><span>Manufacturing</span></div>
+    <div class="industry-card"><div class="industry-icon">🏛️</div><span>Government</span></div>
+    <div class="industry-card"><div class="industry-icon">🎓</div><span>Education</span></div>
+    <div class="industry-card"><div class="industry-icon">🛒</div><span>Retail &amp; E-Commerce</span></div>
+    <div class="industry-card"><div class="industry-icon">📡</div><span>Telecom</span></div>
+    <div class="industry-card"><div class="industry-icon">🏗️</div><span>Real Estate</span></div>
+  </div>
+</section>
+
+<!-- Process -->
+<section id="process">
+  <div class="section-header">
+    <span class="section-tag">How We Work</span>
+    <h2>Our Delivery Process</h2>
+    <p class="section-desc">A structured, transparent approach from first meeting to final handover.</p>
+  </div>
+  <div class="process-steps">
+    <div class="process-step">
+      <div class="step-num">01</div>
+      <h3>Discovery &amp; Audit</h3>
+      <p>We assess your existing environment, understand your goals and identify gaps.</p>
+    </div>
+    <div class="process-step">
+      <div class="step-num">02</div>
+      <h3>Design &amp; Propose</h3>
+      <p>Our engineers design a tailored solution with detailed BOM and project plan.</p>
+    </div>
+    <div class="process-step">
+      <div class="step-num">03</div>
+      <h3>Deploy &amp; Configure</h3>
+      <p>Certified professionals install and configure with zero-disruption methodology.</p>
+    </div>
+    <div class="process-step">
+      <div class="step-num">04</div>
+      <h3>Test &amp; Handover</h3>
+      <p>Full testing, documentation, training, and SLA-backed ongoing support.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Testimonials -->
+<section id="testimonials">
+  <div class="section-header">
+    <span class="section-tag">Client Stories</span>
+    <h2>Trusted by Industry Leaders</h2>
+    <p class="section-desc">What our clients say about working with Flair Network Systems.</p>
+  </div>
+  <div class="testimonials-grid">
+    <div class="testimonial-card">
+      <div class="stars">★★★★★</div>
+      <p>"Flair NS redesigned our entire campus network from scratch. The downtime during migration was virtually zero — exceptional project management and technical depth."</p>
+      <div class="testimonial-author">
+        <div class="author-avatar">AK</div>
+        <div>
+          <div class="author-name">Anand Kulkarni</div>
+          <div class="author-role">CTO, National Bank of India (Regional)</div>
+        </div>
+      </div>
+    </div>
+    <div class="testimonial-card">
+      <div class="stars">★★★★★</div>
+      <p>"Our new data centre infrastructure handled peak loads with ease. Flair's team is thorough, communicative, and delivered on time and on budget — rare in this industry."</p>
+      <div class="testimonial-author">
+        <div class="author-avatar">PM</div>
+        <div>
+          <div class="author-name">Priya Mehta</div>
+          <div class="author-role">IT Director, Apollo Healthcare Group</div>
+        </div>
+      </div>
+    </div>
+    <div class="testimonial-card">
+      <div class="stars">★★★★★</div>
+      <p>"From structured cabling to SD-WAN and surveillance integration — one vendor, complete accountability. Flair NS is now our go-to technology partner for all IT infrastructure."</p>
+      <div class="testimonial-author">
+        <div class="author-avatar">RB</div>
+        <div>
+          <div class="author-name">Rajesh Bhat</div>
+          <div class="author-role">Head of IT, Infosys Campus Operations</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="cta">
+  <div class="cta-box">
+    <span class="section-tag">Get Started</span>
+    <h2>Ready to Build Your Infrastructure?</h2>
+    <p>Talk to our experts today. Free consultation, detailed proposal, zero obligation.</p>
+    <div class="cta-btns">
+      <a class="btn-primary" href="mailto:info@flairnetworksystems.com">Email Us Now</a>
+      <a class="btn-outline" href="tel:+91">Call an Expert</a>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="footer-brand">
+    <span class="logo">Flair<span>NS</span></span>
+    <p>India's leading IT infrastructure partner — building networks, securing connections, and empowering businesses since 2004.</p>
+  </div>
+  <div class="footer-col">
+    <h4>Services</h4>
+    <a href="#services">Structured Cabling</a>
+    <a href="#services">Data Centre</a>
+    <a href="#services">SD-WAN</a>
+    <a href="#services">Wi-Fi Solutions</a>
+    <a href="#services">Security &amp; CCTV</a>
+  </div>
+  <div class="footer-col">
+    <h4>Company</h4>
+    <a href="#about">About Us</a>
+    <a href="#why">Why Flair NS</a>
+    <a href="#industries">Industries</a>
+    <a href="#process">Our Process</a>
+  </div>
+  <div class="footer-col">
+    <h4>Contact</h4>
+    <a href="mailto:info@flairnetworksystems.com">info@flairnetworksystems.com</a>
+    <a href="https://flairnetworksystems.com">flairnetworksystems.com</a>
+    <a href="#cta">Get a Quote</a>
+  </div>
+</footer>
+<div class="footer-bottom">
+  <span>© 2025 Flair Network Systems. All rights reserved.</span>
+  <span>ISO 9001:2015 Certified &nbsp;·&nbsp; Made in India 🇮🇳</span>
+</div>
+
+<script>
+gsap.registerPlugin(ScrollTrigger);
+
+/* ─── CUSTOM CURSOR ─── */
+const cursor = document.getElementById('cursor');
+const ring = document.getElementById('cursor-ring');
+let mx = 0, my = 0, rx = 0, ry = 0;
+document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
+(function animCursor() {
+  rx += (mx - rx) * 0.15;
+  ry += (my - ry) * 0.15;
+  cursor.style.left = mx - 6 + 'px';
+  cursor.style.top = my - 6 + 'px';
+  ring.style.left = rx - 18 + 'px';
+  ring.style.top = ry - 18 + 'px';
+  requestAnimationFrame(animCursor);
+})();
+
+/* ─── SCROLL PROGRESS ─── */
+window.addEventListener('scroll', () => {
+  const pct = window.scrollY / (document.body.scrollHeight - window.innerHeight) * 100;
+  document.getElementById('progress-bar').style.width = pct + '%';
+});
+
+/* ─── 3D BACKGROUND: Network Node Graph ─── */
+(function() {
+  const canvas = document.getElementById('bg-canvas');
+  const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+  renderer.setSize(window.innerWidth, window.innerHeight);
+
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000);
+  camera.position.z = 80;
+
+  // Nodes
+  const nodeCount = 120;
+  const nodeGeo = new THREE.SphereGeometry(0.35, 8, 8);
+  const nodeMat = new THREE.MeshBasicMaterial({ color: 0x00D4FF });
+  const nodes = [], nodePositions = [];
+
+  for (let i = 0; i < nodeCount; i++) {
+    const mesh = new THREE.Mesh(nodeGeo, nodeMat.clone());
+    const x = (Math.random() - 0.5) * 180;
+    const y = (Math.random() - 0.5) * 120;
+    const z = (Math.random() - 0.5) * 80;
+    mesh.position.set(x, y, z);
+    mesh.material.opacity = Math.random() * 0.5 + 0.1;
+    mesh.material.transparent = true;
+    scene.add(mesh);
+    nodes.push(mesh);
+    nodePositions.push(new THREE.Vector3(x, y, z));
+  }
+
+  // Edges
+  const edgeMat = new THREE.LineBasicMaterial({ color: 0x0066FF, transparent: true, opacity: 0.12 });
+  const maxDist = 32;
+  for (let i = 0; i < nodeCount; i++) {
+    for (let j = i + 1; j < nodeCount; j++) {
+      if (nodePositions[i].distanceTo(nodePositions[j]) < maxDist) {
+        const geo = new THREE.BufferGeometry().setFromPoints([nodePositions[i], nodePositions[j]]);
+        scene.add(new THREE.Line(geo, edgeMat.clone()));
+      }
+    }
+  }
+
+  // Mouse parallax
+  let mx = 0, my = 0;
+  document.addEventListener('mousemove', e => {
+    mx = (e.clientX / window.innerWidth - 0.5) * 0.5;
+    my = (e.clientY / window.innerHeight - 0.5) * 0.3;
+  });
+
+  window.addEventListener('resize', () => {
+    camera.aspect = window.innerWidth / window.innerHeight;
+    camera.updateProjectionMatrix();
+    renderer.setSize(window.innerWidth, window.innerHeight);
+  });
+
+  let t = 0;
+  function animate() {
+    requestAnimationFrame(animate);
+    t += 0.003;
+    scene.rotation.y = mx + t * 0.05;
+    scene.rotation.x = -my;
+    // pulse nodes
+    nodes.forEach((n, i) => {
+      n.material.opacity = 0.1 + Math.abs(Math.sin(t + i * 0.3)) * 0.4;
+    });
+    renderer.render(scene, camera);
+  }
+  animate();
+})();
+
+/* ─── ABOUT CANVAS: Spinning Torus Knot ─── */
+(function() {
+  const canvas = document.getElementById('about-canvas');
+  const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+  function resize() {
+    const w = canvas.parentElement.clientWidth;
+    const h = canvas.parentElement.clientHeight;
+    renderer.setSize(w, h);
+    camera.aspect = w / h;
+    camera.updateProjectionMatrix();
+  }
+
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(50, 1, 0.1, 100);
+  camera.position.set(0, 0, 5);
+  resize();
+
+  // Torus knot wireframe
+  const geo = new THREE.TorusKnotGeometry(1.4, 0.45, 180, 24);
+  const mat = new THREE.MeshBasicMaterial({ color: 0x00D4FF, wireframe: true, transparent: true, opacity: 0.35 });
+  const mesh = new THREE.Mesh(geo, mat);
+  scene.add(mesh);
+
+  // Glow sphere
+  const sgeo = new THREE.SphereGeometry(2.8, 32, 32);
+  const smat = new THREE.MeshBasicMaterial({ color: 0x0066FF, transparent: true, opacity: 0.04, side: THREE.BackSide });
+  scene.add(new THREE.Mesh(sgeo, smat));
+
+  let t = 0;
+  function animate() {
+    requestAnimationFrame(animate);
+    t += 0.008;
+    mesh.rotation.x = t * 0.5;
+    mesh.rotation.y = t * 0.7;
+    mat.opacity = 0.25 + Math.sin(t) * 0.1;
+    renderer.render(scene, camera);
+  }
+  animate();
+  window.addEventListener('resize', resize);
+})();
+
+/* ─── COUNTER ANIMATION ─── */
+function animateCounter(el, target, suffix) {
+  let start = 0;
+  const dur = 2000;
+  const step = (target / dur) * 16;
+  const tick = () => {
+    start += step;
+    if (start >= target) { el.textContent = target.toLocaleString() + (suffix || ''); return; }
+    el.textContent = Math.floor(start).toLocaleString() + (suffix || '');
+    requestAnimationFrame(tick);
+  };
+  tick();
+}
+const counters = document.querySelectorAll('.stat-num[data-target]');
+let counted = false;
+const ob = new IntersectionObserver(entries => {
+  if (entries[0].isIntersecting && !counted) {
+    counted = true;
+    counters.forEach(el => {
+      const target = parseInt(el.dataset.target);
+      let suffix = target === 99 ? '%' : target === 200000 ? '+' : '+';
+      animateCounter(el, target, suffix);
+    });
+  }
+}, { threshold: 0.4 });
+ob.observe(document.getElementById('hero'));
+
+/* ─── GSAP SCROLL ANIMATIONS ─── */
+// Service cards
+gsap.utils.toArray('.service-card').forEach((el, i) => {
+  gsap.from(el, {
+    scrollTrigger: { trigger: el, start: 'top 85%' },
+    y: 50, opacity: 0, duration: 0.7, delay: (i % 3) * 0.12,
+    ease: 'power3.out'
+  });
+});
+
+// About
+gsap.from('.about-content', {
+  scrollTrigger: { trigger: '#about', start: 'top 70%' },
+  x: 60, opacity: 0, duration: 1, ease: 'power3.out'
+});
+gsap.from('.about-visual', {
+  scrollTrigger: { trigger: '#about', start: 'top 70%' },
+  x: -60, opacity: 0, duration: 1, ease: 'power3.out'
+});
+
+// Why cards
+gsap.utils.toArray('.why-card').forEach((el, i) => {
+  gsap.from(el, {
+    scrollTrigger: { trigger: el, start: 'top 85%' },
+    y: 40, opacity: 0, duration: 0.6, delay: i * 0.1, ease: 'power3.out'
+  });
+});
+
+// Industries
+gsap.utils.toArray('.industry-card').forEach((el, i) => {
+  gsap.from(el, {
+    scrollTrigger: { trigger: el, start: 'top 90%' },
+    scale: 0.8, opacity: 0, duration: 0.5, delay: i * 0.06, ease: 'back.out(1.4)'
+  });
+});
+
+// Process steps
+gsap.utils.toArray('.process-step').forEach((el, i) => {
+  gsap.from(el, {
+    scrollTrigger: { trigger: el, start: 'top 85%' },
+    y: 40, opacity: 0, duration: 0.7, delay: i * 0.15, ease: 'power3.out'
+  });
+});
+
+// Testimonials
+gsap.utils.toArray('.testimonial-card').forEach((el, i) => {
+  gsap.from(el, {
+    scrollTrigger: { trigger: el, start: 'top 85%' },
+    y: 40, opacity: 0, duration: 0.7, delay: i * 0.15, ease: 'power3.out'
+  });
+});
+
+// CTA
+gsap.from('.cta-box', {
+  scrollTrigger: { trigger: '#cta', start: 'top 75%' },
+  scale: 0.92, opacity: 0, duration: 0.9, ease: 'power3.out'
+});
+
+// Hero entrance
+gsap.from('.hero-badge', { delay: 0.2, y: 20, opacity: 0, duration: 0.7 });
+gsap.from('h1', { delay: 0.4, y: 30, opacity: 0, duration: 0.8 });
+gsap.from('.hero-sub', { delay: 0.6, y: 20, opacity: 0, duration: 0.7 });
+gsap.from('.hero-btns', { delay: 0.8, y: 20, opacity: 0, duration: 0.7 });
+gsap.from('.hero-stats', { delay: 1.0, y: 20, opacity: 0, duration: 0.7 });
+</script>
+</body>
+</html>
