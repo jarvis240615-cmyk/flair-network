@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://jarvis240615-cmyk.github.io/flair-network/sitemap.xml
