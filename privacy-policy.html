@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Privacy Policy — Flair Network Systems</title>
+  <meta name="description" content="Privacy Policy for Flair Network Systems. Learn how we collect, use, and protect your personal information." />
+  <link rel="canonical" href="https://jarvis240615-cmyk.github.io/flair-network/privacy-policy.html" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230066FF'/%3E%3Ccircle cx='16' cy='16' r='4' fill='%2300D4FF'/%3E%3Cline x1='16' y1='4' x2='16' y2='12' stroke='%2300D4FF' stroke-width='2'/%3E%3Cline x1='16' y1='20' x2='16' y2='28' stroke='%2300D4FF' stroke-width='2'/%3E%3Cline x1='4' y1='16' x2='12' y2='16' stroke='%2300D4FF' stroke-width='2'/%3E%3Cline x1='20' y1='16' x2='28' y2='16' stroke='%2300D4FF' stroke-width='2'/%3E%3Ccircle cx='16' cy='4' r='2' fill='%2300D4FF'/%3E%3Ccircle cx='16' cy='28' r='2' fill='%2300D4FF'/%3E%3Ccircle cx='4' cy='16' r='2' fill='%2300D4FF'/%3E%3Ccircle cx='28' cy='16' r='2' fill='%2300D4FF'/%3E%3C/svg%3E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --blue: #0066FF;
+      --cyan: #00D4FF;
+      --dark: #020814;
+      --darker: #010610;
+      --card: rgba(255,255,255,0.04);
+      --border: rgba(0,212,255,0.15);
+      --text: #e2e8f0;
+      --muted: #94a3b8;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--dark);
+      color: var(--text);
+      overflow-x: hidden;
+    }
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 60px;
+      background: rgba(2,8,20,0.85);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+    }
+    .logo {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 22px;
+      font-weight: 700;
+      background: linear-gradient(135deg, #fff 0%, var(--cyan) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-decoration: none;
+      letter-spacing: -0.5px;
+    }
+    .logo span { color: var(--cyan); -webkit-text-fill-color: var(--cyan); }
+    .nav-links { display: flex; gap: 36px; list-style: none; }
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--cyan); }
+    .nav-cta {
+      background: linear-gradient(135deg, var(--blue), var(--cyan));
+      color: #fff;
+      border: none;
+      padding: 10px 24px;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .nav-cta:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 8px 30px rgba(0,102,255,0.4);
+    }
+
+    .page-hero {
+      padding: 140px 60px 80px;
+      text-align: center;
+      background: radial-gradient(ellipse at center top, rgba(0,102,255,0.08) 0%, transparent 60%);
+      border-bottom: 1px solid var(--border);
+    }
+    .page-tag {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--cyan);
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+    .page-hero h1 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(32px, 5vw, 56px);
+      font-weight: 800;
+      letter-spacing: -1.5px;
+      line-height: 1.1;
+      margin-bottom: 16px;
+    }
+    .page-hero h1 span {
+      background: linear-gradient(135deg, #fff 20%, var(--cyan) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .page-hero p {
+      color: var(--muted);
+      font-size: 16px;
+      max-width: 560px;
+      margin: 0 auto;
+      line-height: 1.7;
+    }
+    .last-updated {
+      display: inline-block;
+      margin-top: 20px;
+      font-size: 13px;
+      color: var(--muted);
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      padding: 6px 18px;
+    }
+
+    .content-wrap {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 80px 60px 100px;
+    }
+    .section-block {
+      margin-bottom: 52px;
+    }
+    .section-block h2 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 18px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--border);
+      letter-spacing: -0.3px;
+    }
+    .section-block p {
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.85;
+      margin-bottom: 14px;
+    }
+    .section-block ul {
+      list-style: none;
+      margin: 14px 0;
+    }
+    .section-block ul li {
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.8;
+      padding: 6px 0 6px 24px;
+      position: relative;
+    }
+    .section-block ul li::before {
+      content: '▸';
+      color: var(--cyan);
+      position: absolute;
+      left: 0;
+      font-size: 12px;
+      top: 8px;
+    }
+    .section-block a {
+      color: var(--cyan);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(0,212,255,0.3);
+      transition: border-color 0.2s;
+    }
+    .section-block a:hover { border-color: var(--cyan); }
+
+    .highlight-box {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--cyan);
+      border-radius: 0 12px 12px 0;
+      padding: 20px 24px;
+      margin: 24px 0;
+    }
+    .highlight-box p {
+      color: var(--text) !important;
+      font-size: 14px !important;
+      margin-bottom: 0 !important;
+    }
+
+    footer {
+      padding: 60px;
+      border-top: 1px solid var(--border);
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 48px;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+    .footer-brand .logo-text { font-size: 20px; margin-bottom: 16px; display: block; }
+    .footer-brand p { color: var(--muted); font-size: 14px; line-height: 1.7; max-width: 280px; }
+    .footer-col h3 {
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--cyan);
+      margin-bottom: 20px;
+    }
+    .footer-col a {
+      display: block;
+      color: var(--muted);
+      font-size: 14px;
+      text-decoration: none;
+      margin-bottom: 12px;
+      transition: color 0.2s;
+    }
+    .footer-col a:hover { color: var(--text); }
+    .footer-bottom {
+      border-top: 1px solid var(--border);
+      padding: 24px 60px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: var(--muted);
+      font-size: 13px;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .footer-bottom a { color: var(--cyan); text-decoration: none; }
+
+    @media (max-width: 900px) {
+      nav { padding: 16px 24px; }
+      .nav-links { display: none; }
+      .page-hero { padding: 100px 24px 60px; }
+      .content-wrap { padding: 60px 24px 80px; }
+      footer { padding: 40px 24px; grid-template-columns: 1fr 1fr; }
+      .footer-bottom { padding: 20px 24px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Nav -->
+<nav>
+  <a class="logo" href="index.html">Flair<span>NS</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html#services">Services</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="index.html#industries">Industries</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <a class="nav-cta" href="contact.html">Get a Quote</a>
+</nav>
+
+<!-- Page Hero -->
+<div class="page-hero">
+  <span class="page-tag">Legal</span>
+  <h1><span>Privacy Policy</span></h1>
+  <p>We are committed to protecting your privacy. This policy explains how Flair Network Systems collects, uses, and safeguards your information.</p>
+  <span class="last-updated">Last Updated: January 2025</span>
+</div>
+
+<!-- Content -->
+<div class="content-wrap">
+
+  <div class="section-block">
+    <h2>1. Introduction</h2>
+    <p>Flair Network Systems ("we", "our", or "us") operates the website at <a href="https://jarvis240615-cmyk.github.io/flair-network/">jarvis240615-cmyk.github.io/flair-network</a> (the "Site"). This Privacy Policy describes how we collect, use, disclose, and safeguard your information when you visit our Site or contact us about our IT infrastructure services.</p>
+    <p>Please read this policy carefully. If you disagree with its terms, please discontinue use of the Site. We reserve the right to make changes to this policy at any time, and will update the "Last Updated" date accordingly.</p>
+  </div>
+
+  <div class="section-block">
+    <h2>2. Information We Collect</h2>
+    <p>We may collect information about you in a variety of ways, including:</p>
+    <ul>
+      <li><strong>Contact Information:</strong> Name, email address, phone number, and company name when you submit an enquiry or contact form.</li>
+      <li><strong>Usage Data:</strong> Information about how you access and use our Site, including your IP address, browser type, operating system, referring URLs, pages viewed, and time spent on pages.</li>
+      <li><strong>Communications:</strong> Records of correspondence when you contact us by email, phone, or through our contact form.</li>
+      <li><strong>Technical Data:</strong> Cookie identifiers and similar tracking technologies (see Section 4).</li>
+    </ul>
+    <p>We do not collect sensitive personal information such as financial data, government identification numbers, or health information through this Site.</p>
+  </div>
+
+  <div class="section-block">
+    <h2>3. How We Use Your Information</h2>
+    <p>We use the information we collect for legitimate business purposes, including:</p>
+    <ul>
+      <li>Responding to your enquiries and providing quotes for our IT infrastructure services</li>
+      <li>Sending you relevant information about our services that you have requested</li>
+      <li>Improving and personalising your experience on our Site</li>
+      <li>Analysing Site traffic and usage trends to improve our online presence</li>
+      <li>Complying with legal obligations and resolving disputes</li>
+      <li>Protecting our Site against fraudulent or unlawful activity</li>
+    </ul>
+    <p>We will not sell, trade, or rent your personal information to third parties for their marketing purposes without your explicit consent.</p>
+  </div>
+
+  <div class="section-block">
+    <h2>4. Cookies and Tracking Technologies</h2>
+    <p>Our Site may use cookies and similar tracking technologies to enhance your browsing experience. Cookies are small data files stored on your device that help us understand how visitors interact with our Site.</p>
+    <p>We may use the following types of cookies:</p>
+    <ul>
+      <li><strong>Essential Cookies:</strong> Required for the Site to function properly. These cannot be disabled.</li>
+      <li><strong>Analytics Cookies:</strong> Help us understand how visitors use our Site (e.g., Google Analytics). These are anonymised and help us improve our content and services.</li>
+      <li><strong>Preference Cookies:</strong> Remember your settings and preferences for a better experience on future visits.</li>
+    </ul>
+    <p>You can instruct your browser to refuse all cookies or to indicate when a cookie is being sent. However, if you do not accept cookies, some portions of our Site may not function correctly.</p>
+  </div>
+
+  <div class="section-block">
+    <h2>5. Third-Party Services</h2>
+    <p>We may use third-party service providers to help us operate our Site or conduct our business. These third parties have access to your personal information only to perform specific tasks on our behalf and are obligated not to disclose or use it for other purposes. These may include:</p>
+    <ul>
+      <li><strong>Google Analytics:</strong> For website traffic analysis. Data is anonymised and aggregated. View <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google's Privacy Policy</a>.</li>
+      <li><strong>Email Service Providers:</strong> For delivering enquiry confirmation emails and service communications.</li>
+      <li><strong>Hosting Providers:</strong> Our Site is hosted via GitHub Pages. View <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement" target="_blank" rel="noopener">GitHub's Privacy Statement</a>.</li>
+    </ul>
+    <p>We are not responsible for the privacy practices of these third-party services and encourage you to review their respective privacy policies.</p>
+  </div>
+
+  <div class="section-block">
+    <h2>6. Data Retention</h2>
+    <p>We retain personal information only as long as necessary to fulfil the purposes described in this policy, or as required by law. Contact enquiry data is typically retained for up to 3 years for business purposes. You may request deletion of your data at any time by contacting us (see Section 9).</p>
+  </div>
+
+  <div class="section-block">
+    <h2>7. Data Security</h2>
+    <p>We implement appropriate technical and organisational security measures to protect your personal information from unauthorised access, disclosure, alteration, or destruction. These measures include SSL/TLS encryption for data in transit and access controls for data at rest.</p>
+    <div class="highlight-box">
+      <p>⚠️ Please note: No method of transmission over the Internet or method of electronic storage is 100% secure. While we strive to use commercially acceptable means to protect your personal data, we cannot guarantee its absolute security.</p>
+    </div>
+  </div>
+
+  <div class="section-block">
+    <h2>8. Your Rights</h2>
+    <p>Depending on your jurisdiction, you may have the following rights regarding your personal information:</p>
+    <ul>
+      <li><strong>Right of Access:</strong> Request a copy of the personal data we hold about you.</li>
+      <li><strong>Right to Rectification:</strong> Request correction of inaccurate or incomplete data.</li>
+      <li><strong>Right to Erasure:</strong> Request deletion of your personal data in certain circumstances.</li>
+      <li><strong>Right to Object:</strong> Object to processing of your personal data for marketing purposes.</li>
+      <li><strong>Right to Data Portability:</strong> Request a machine-readable copy of your data.</li>
+    </ul>
+    <p>To exercise any of these rights, please contact us using the details in Section 9. We will respond within 30 days.</p>
+  </div>
+
+  <div class="section-block">
+    <h2>9. Contact Us</h2>
+    <p>If you have questions, concerns, or requests regarding this Privacy Policy or our data practices, please contact our privacy team:</p>
+    <div class="highlight-box">
+      <p>
+        <strong>Flair Network Systems</strong><br />
+        Privacy Enquiries: <a href="mailto:privacy@flairnetworksystems.com">privacy@flairnetworksystems.com</a><br />
+        General: <a href="mailto:info@flairnetworksystems.com">info@flairnetworksystems.com</a><br />
+        Website: <a href="https://flairnetworksystems.com">flairnetworksystems.com</a>
+      </p>
+    </div>
+  </div>
+
+  <div class="section-block">
+    <h2>10. Sitemap &amp; Additional Resources</h2>
+    <p>For a complete listing of pages on this Site, please refer to our <a href="sitemap.xml">XML Sitemap</a>. For information about what search engines can access, see our <a href="robots.txt">robots.txt</a>.</p>
+  </div>
+
+</div>
+
+<!-- Footer -->
+<footer>
+  <div class="footer-brand">
+    <a class="logo logo-text" href="index.html">Flair<span>NS</span></a>
+    <p>India's leading IT infrastructure partner — building networks, securing connections, and empowering businesses since 2004.</p>
+  </div>
+  <div class="footer-col">
+    <h3>Services</h3>
+    <a href="index.html#services">Structured Cabling</a>
+    <a href="index.html#services">Data Centre</a>
+    <a href="index.html#services">SD-WAN</a>
+    <a href="index.html#services">Wi-Fi Solutions</a>
+    <a href="index.html#services">Security &amp; CCTV</a>
+  </div>
+  <div class="footer-col">
+    <h3>Company</h3>
+    <a href="about.html">About Us</a>
+    <a href="index.html#why">Why Flair NS</a>
+    <a href="index.html#industries">Industries</a>
+    <a href="index.html#process">Our Process</a>
+  </div>
+  <div class="footer-col">
+    <h3>Contact</h3>
+    <a href="mailto:info@flairnetworksystems.com">info@flairnetworksystems.com</a>
+    <a href="contact.html">Contact Us</a>
+    <a href="about.html">About Us</a>
+    <a href="privacy-policy.html">Privacy Policy</a>
+  </div>
+</footer>
+<div class="footer-bottom">
+  <span>© 2025 Flair Network Systems. All rights reserved.</span>
+  <span>
+    <a href="privacy-policy.html">Privacy Policy</a> &nbsp;·&nbsp;
+    <a href="contact.html">Contact</a> &nbsp;·&nbsp;
+    ISO 9001:2015 Certified &nbsp;·&nbsp; Made in India 🇮🇳
+  </span>
+</div>
+
+</body>
+</html>
