@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Services — Flair Network Systems</title>
+  <meta name="description" content="Full spectrum IT infrastructure services: Structured Cabling, SD-WAN, Data Centres, Wi-Fi, Security, ServiceNow, AV Systems, and IT Audits." />
+  <link rel="stylesheet" href="shared.css" />
+  <style>
+    /* ── Tabs UI ── */
+    .services-tabs-section {
+      padding-top: 2rem;
+    }
+
+    .tabs-wrapper {
+      display: grid;
+      grid-template-columns: 260px 1fr;
+      gap: 2rem;
+      align-items: start;
+      position: relative;
+    }
+
+    .tab-pills {
+      position: sticky;
+      top: 90px;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .tab-pill {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.85rem 1rem;
+      border-radius: var(--radius);
+      border: 1px solid transparent;
+      background: transparent;
+      cursor: none;
+      transition: var(--transition);
+      color: var(--muted);
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 500;
+      text-align: left;
+      width: 100%;
+    }
+
+    .tab-pill:hover {
+      background: rgba(0,212,255,0.05);
+      color: var(--text);
+      border-color: var(--border);
+    }
+
+    .tab-pill.active {
+      background: rgba(0,102,255,0.1);
+      border-color: rgba(0,102,255,0.3);
+      color: var(--cyan);
+    }
+
+    .tab-pill svg { flex-shrink: 0; }
+
+    .tab-pill-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--blue);
+      margin-left: auto;
+      opacity: 0;
+      transition: opacity 0.2s;
+    }
+
+    .tab-pill.active .tab-pill-dot { opacity: 1; }
+
+    /* Tab Panels */
+    .tab-panels { position: relative; min-height: 500px; }
+
+    .tab-panel {
+      display: none;
+      animation: fadePanel 0.4s ease;
+    }
+
+    .tab-panel.active { display: block; }
+
+    @keyframes fadePanel {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: none; }
+    }
+
+    .panel-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: start;
+      margin-bottom: 2.5rem;
+    }
+
+    .panel-text .service-icon {
+      width: 64px; height: 64px;
+      border-radius: 16px;
+      margin-bottom: 1.5rem;
+    }
+
+    .panel-text h2 { font-size: 2rem; margin-bottom: 1rem; }
+    .panel-text p { font-size: 1rem; line-height: 1.8; margin-bottom: 1.5rem; }
+
+    .feature-list { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+
+    .feature-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.6rem;
+      font-size: 0.9rem;
+      color: var(--text);
+    }
+
+    .feature-list li::before {
+      content: '';
+      display: inline-block;
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--cyan);
+      flex-shrink: 0;
+      margin-top: 0.45em;
+    }
+
+    .panel-right { display: flex; flex-direction: column; gap: 1.25rem; }
+
+    .use-case-card {
+      padding: 1.5rem;
+      background: rgba(255,255,255,0.025);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      transition: var(--transition);
+    }
+
+    .use-case-card:hover {
+      border-color: rgba(0,212,255,0.25);
+      background: rgba(0,212,255,0.04);
+    }
+
+    .use-case-card h5 {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--cyan);
+      margin-bottom: 0.4rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    .use-case-card p { font-size: 0.875rem; }
+
+    .panel-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem; }
+
+    .cta-banner {
+      background: linear-gradient(135deg, rgba(0,102,255,0.1), rgba(124,58,237,0.1));
+      border: 1px solid rgba(0,102,255,0.2);
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .cta-banner h4 { margin-bottom: 0.3rem; }
+    .cta-banner p { font-size: 0.9rem; margin: 0; }
+
+    @media (max-width: 900px) {
+      .tabs-wrapper { grid-template-columns: 1fr; }
+      .tab-pills { position: static; flex-direction: row; flex-wrap: wrap; }
+      .tab-pill { width: auto; flex: 1; min-width: 120px; font-size: 0.8rem; }
+      .panel-inner { grid-template-columns: 1fr; gap: 2rem; }
+    }
+  </style>
+</head>
+<body>
+
+<div id="loader">
+  <div class="loader-logo">Flair<span>NS</span></div>
+  <div class="loader-bar"></div>
+  <div class="loader-text">Loading Services...</div>
+</div>
+<div id="cursor"></div>
+<div id="cursor-ring"></div>
+<div id="scroll-progress"></div>
+
+<a href="contact.html" id="float-cta">
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M7.5 8.25h9m-9 3H12m-9.75 1.51c0 1.6 1.123 2.994 2.707 3.227 1.129.166 2.27.293 3.423.379.35.026.67.21.865.501L12 21l2.755-3.645c.195-.29.515-.475.865-.501a48.5 48.5 0 003.423-.379c1.584-.233 2.707-1.626 2.707-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0012 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018z"/></svg>
+  Get a Quote
+</a>
+
+<nav class="nav">
+  <a href="index.html" class="nav-logo">Flair<span>NS</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="solutions.html">Solutions</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="case-studies.html">Case Studies</a></li>
+    <li><a href="contact.html">Contact</a></li>
+    <li><a href="contact.html" class="nav-cta">Get a Quote</a></li>
+  </ul>
+  <button class="nav-hamburger" aria-label="Toggle menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="nav-mobile">
+  <a href="index.html">Home</a>
+  <a href="services.html">Services</a>
+  <a href="solutions.html">Solutions</a>
+  <a href="about.html">About</a>
+  <a href="case-studies.html">Case Studies</a>
+  <a href="contact.html">Contact</a>
+  <a href="contact.html" class="nav-cta" style="margin-top:.5rem;text-align:center;border-radius:8px;padding:.7rem 1rem;">Get a Quote →</a>
+</div>
+
+<!-- Hero -->
+<div class="page-hero">
+  <div class="page-hero-bg"></div>
+  <div class="page-hero-tag">
+    <svg width="12" height="12" fill="currentColor" viewBox="0 0 8 8"><circle cx="4" cy="4" r="4"/></svg>
+    8 Service Lines
+  </div>
+  <h1>Infrastructure Services<br /><span class="gradient-text">That Deliver.</span></h1>
+  <p>From passive cabling to cloud-managed SD-WAN — every service engineered for enterprise scale and long-term reliability.</p>
+</div>
+
+<!-- Tabs -->
+<section class="section services-tabs-section">
+  <div class="tabs-wrapper">
+
+    <!-- Pills -->
+    <nav class="tab-pills">
+      <button class="tab-pill active" data-target="cabling">
+        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M9 3H5a2 2 0 00-2 2v4m6-6h10a2 2 0 012 2v4M9 3v18m0 0h10a2 2 0 002-2V9M9 21H5a2 2 0 01-2-2V9m0 0h18"/></svg>
+        Structured Cabling
+        <span class="tab-pill-dot"></span>
+      </button>
+      <button class="tab-pill" data-target="sdwan">
+        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064"/><circle cx="12" cy="12" r="9"/></svg>
+        SD-WAN
+        <span class="tab-pill-dot"></span>
+      </button>
+      <button class="tab-pill" data-target="dc">
+        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+        Data Centre
+        <span class="tab-pill-dot"></span>
+      </button>
+      <button class="tab-pill" data-target="wifi">
+        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M8.111 16.404a5.5 5.5 0 017.778 0M12 20h.01m-7.08-7.071c3.904-3.905 10.236-3.905 14.141 0M1.394 9.393c5.857-5.857 15.355-5.857 21.213 0"/></svg>
+        Wi-Fi Solutions
+        <span class="tab-pill-dot"></span>
+      </button>
+      <button class="tab-pill" data-target="security">
+        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M15 10l4.553-2.069A1 1 0 0121 8.82V15.18a1 1 0 01-1.447.894L15 14M3 8a2 2 0 012-2h10a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2V8z"/></svg>
+        Security &amp; CCTV
+        <span class="tab-pill-dot"></span>
+      </button>
+      <button class="tab-pill" data-target="servicenow">
+        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><circle cx="12" cy="12" r="3"/></svg>
+        ServiceNow
+        <span class="tab-pill-dot"></span>
+      </button>
+      <button class="tab-pill" data-target="av">
+        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+        AV Systems
+        <span class="tab-pill-dot"></span>
+      </button>
+      <button class="tab-pill" data-target="audits">
+        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/></svg>
+        IT Audits
+        <span class="tab-pill-dot"></span>
+      </button>
+    </nav>
+
+    <!-- Panels -->
+    <div class="tab-panels">
+
+      <!-- Cabling -->
+      <div class="tab-panel active" id="panel-cabling">
+        <div class="panel-inner">
+          <div class="panel-text">
+            <div class="service-icon">
+              <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24"><path d="M9 3H5a2 2 0 00-2 2v4m6-6h10a2 2 0 012 2v4M9 3v18m0 0h10a2 2 0 002-2V9M9 21H5a2 2 0 01-2-2V9m0 0h18"/></svg>
+            </div>
+            <h2 id="cabling">Structured <span class="gradient-text-bc">Cabling</span></h2>
+            <p>A well-designed cabling infrastructure is the invisible backbone of every enterprise network. At Flair Network Systems, we design and deploy enterprise-grade structured cabling systems that exceed TIA-568, ISO/IEC 11801, and BICSI standards. From small office deployments to sprawling multi-building campuses, our cabling installations deliver consistent performance, simplified management, and the flexibility to support evolving technology requirements for decades.</p>
+            <p>We work with Cat6A, Cat7, and fibre optic solutions (single-mode and multi-mode) tailored to your bandwidth and distance requirements. Our team handles end-to-end delivery: site surveys, design, installation, testing, certification, and as-built documentation.</p>
+            <ul class="feature-list">
+              <li>Cat6A & Cat7 copper cabling — voice, data, PoE</li>
+              <li>Single-mode & multi-mode fibre optic (LC/SC/MPO)</li>
+              <li>Structured horizontal and backbone cabling</li>
+              <li>Patch panel & cable management design</li>
+              <li>Fluke DSX-8000 certification testing</li>
+              <li>As-built drawings and full documentation</li>
+              <li>Data centre structured cabling (cable trays, containment)</li>
+              <li>Ongoing MAC (moves/adds/changes) support</li>
+            </ul>
+            <div class="panel-tags">
+              <span class="tag">TIA-568 Certified</span>
+              <span class="tag">ISO/IEC 11801</span>
+              <span class="tag">BICSI Standards</span>
+              <span class="tag">Fluke Certified</span>
+            </div>
+          </div>
+          <div class="panel-right">
+            <div class="use-case-card">
+              <h5>Use Case: Corporate Campus</h5>
+              <p>Complete cabling infrastructure for a 10,000-seat IT park in Pune — 500km+ of Cat6A, 12 MDF/IDF rooms, certified to TIA-568-C.2.</p>
+            </div>
+            <div class="use-case-card">
+              <h5>Use Case: Healthcare Network</h5>
+              <p>Hospital LAN cabling for EMR systems, nursing stations, and medical imaging — plenum-rated cables to meet fire safety codes.</p>
+            </div>
+            <div class="use-case-card">
+              <h5>Use Case: Retrofit & Upgrade</h5>
+              <p>Migrated a legacy Cat5 office to Cat6A without disrupting operations — phased over weekends with zero business downtime.</p>
+            </div>
+            <div class="cta-banner">
+              <div>
+                <h4>Need a site survey?</h4>
+                <p>Our engineers provide free preliminary assessments for qualifying projects.</p>
+              </div>
+              <a href="contact.html" class="btn btn-primary">Request Survey</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SD-WAN -->
+      <div class="tab-panel" id="panel-sdwan">
+        <div class="panel-inner">
+          <div class="panel-text">
+            <div class="service-icon">
+              <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24"><path d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064"/><circle cx="12" cy="12" r="9"/></svg>
+            </div>
+            <h2 id="sdwan">SD-WAN <span class="gradient-text-bc">Networks</span></h2>
+            <p>Traditional MPLS networks are expensive, inflexible, and can't keep up with cloud-first enterprises. Our SD-WAN solutions give you application-aware routing, centralised management, and internet-circuit cost savings of 40–60% compared to legacy WAN architectures. We partner with Cisco Viptela, Fortinet SD-WAN, and VMware NSX to deliver the right fit for your network topology and security requirements.</p>
+            <p>Whether you're connecting 5 branches or 500, our SD-WAN deployments deliver consistent, predictable performance for SaaS applications, real-time voice and video, and private data centre traffic — all with zero-touch provisioning and single-pane-of-glass visibility.</p>
+            <ul class="feature-list">
+              <li>Multi-vendor SD-WAN: Cisco, Fortinet, VMware</li>
+              <li>Hybrid WAN (MPLS + broadband + 4G/5G)</li>
+              <li>Application-aware traffic steering</li>
+              <li>Zero-touch provisioning for branch rollouts</li>
+              <li>Integrated next-gen firewall and IPS</li>
+              <li>Centralised management & analytics dashboard</li>
+              <li>QoS policies for voice, video, and critical apps</li>
+              <li>24×7 NOC monitoring and managed services</li>
+            </ul>
+            <div class="panel-tags">
+              <span class="tag">Cisco Viptela</span>
+              <span class="tag">Fortinet</span>
+              <span class="tag">VMware NSX</span>
+              <span class="tag">Zero-Touch Provisioning</span>
+            </div>
+          </div>
+          <div class="panel-right">
+            <div class="use-case-card">
+              <h5>Use Case: Banking Network</h5>
+              <p>SD-WAN rollout across 50 bank branches — replaced aging MPLS links, reduced WAN costs by 45%, improved application performance by 3×.</p>
+            </div>
+            <div class="use-case-card">
+              <h5>Use Case: Retail Chain</h5>
+              <p>Connected 80 retail outlets across Maharashtra with dual ISP failover — 99.97% uptime for POS and inventory systems.</p>
+            </div>
+            <div class="use-case-card">
+              <h5>Use Case: Manufacturing</h5>
+              <p>Factory network modernisation with SD-WAN + OT/IT segmentation for SCADA and ERP traffic isolation and security.</p>
+            </div>
+            <div class="cta-banner">
+              <div>
+                <h4>WAN cost analysis</h4>
+                <p>We'll model your current WAN spend vs. SD-WAN — free, no obligation.</p>
+              </div>
+              <a href="contact.html" class="btn btn-primary">Get Analysis</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Data Centre -->
+      <div class="tab-panel" id="panel-dc">
+        <div class="panel-inner">
+          <div class="panel-text">
+            <div class="service-icon">
+              <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+            </div>
+            <h2 id="dc">Data Centre <span class="gradient-text-bc">Infrastructure</span></h2>
+            <p>A modern data centre is the heartbeat of digital enterprise. Flair Network Systems delivers end-to-end data centre infrastructure — from greenfield builds to brownfield upgrades and edge DC deployments. Our solutions encompass physical infrastructure (racks, power, cooling, cabling), network fabric design, and managed operations support, all designed to Tier II/III/IV standards as required.</p>
+            <p>We combine deep expertise in structured cabling, high-density compute networking, and hot/cold aisle containment to deliver efficient, scalable facilities that reduce PUE and operational cost while maximising reliability. Every project is designed with business continuity as the primary objective.</p>
+            <ul class="feature-list">
+              <li>Greenfield & brownfield DC design and build</li>
+              <li>Hot/cold aisle containment systems</li>
+              <li>Structured cabling (MPO/MTP fibre, Cat6A copper)</li>
+              <li>Top-of-rack, spine-leaf network architectures</li>
+              <li>Power (PDU, UPS, generator, ATS) infrastructure</li>
+              <li>Precision cooling design (CRAC/CRAH, in-row cooling)</li>
+              <li>DCIM (Data Centre Infrastructure Management)</li>
+              <li>Edge DC and modular pod deployments</li>
+            </ul>
+            <div class="panel-tags">
+              <span class="tag">Tier III Design</span>
+              <span class="tag">Hot/Cold Aisle</span>
+              <span class="tag">DCIM</span>
+              <span class="tag">Edge DC</span>
+            </div>
+          </div>
+          <div class="panel-right">
+            <div class="use-case-card">
+              <h5>Use Case: Enterprise DC — Chennai</h5>
+              <p>Built a 500-rack Tier III data centre for a financial services firm — 2N power redundancy, sub-20ms latency to AWS Mumbai.</p>
+            </div>
+            <div class="use-case-card">
+              <h5>Use Case: DC Consolidation</h5>
+              <p>Consolidated 4 legacy server rooms into a single modern DC — reduced power consumption by 35%, improved availability to 99.98%.</p>
+            </div>
+            <div class="use-case-card">
+              <h5>Use Case: Edge Deployment</h5>
+              <p>Deployed micro-DC pods at 12 manufacturing plants for real-time OT data processing with 4ms latency to plant control systems.</p>
+            </div>
+            <div class="cta-banner">
+              <div>
+                <h4>DC design consultation</h4>
+                <p>Our architects will review your capacity and redundancy requirements.</p>
+              </div>
+              <a href="contact.html" class="btn btn-primary">Book Consultation</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Wi-Fi -->
+      <div class="tab-panel" id="panel-wifi">
+        <div class="panel-inner">
+          <div class="panel-text">
+            <div class="service-icon">
+              <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24"><path d="M8.111 16.404a5.5 5.5 0 017.778 0M12 20h.01m-7.08-7.071c3.904-3.905 10.236-3.905 14.141 0M1.394 9.393c5.857-5.857 15.355-5.857 21.213 0"/></svg>
+            </div>
+            <h2 id="wifi">Wi-Fi <span class="gradient-text-bc">Solutions</span></h2>
+            <p>Dense, reliable wireless connectivity is no longer a nice-to-have — it's business infrastructure. Our enterprise Wi-Fi solutions are designed from first principles: proper RF surveys, strategic access point placement, and channel planning that actually works in high-density environments. We deploy and manage Cisco Meraki, Aruba, and Ruckus solutions across campuses, hospitals, hotels, and warehouses.</p>
+            <p>With Wi-Fi 6 (802.11ax) and Wi-Fi 6E, we deliver the throughput and capacity for thousands of simultaneous connections, IoT devices, and latency-sensitive applications. Our managed Wi-Fi service includes 24×7 monitoring, performance reporting, and proactive optimisation.</p>
+            <ul class="feature-list">
+              <li>Predictive RF site surveys (Ekahau/iBwave)</li>
+              <li>Wi-Fi 6 & 6E high-density deployments</li>
+              <li>Cisco Meraki, Aruba, Ruckus platforms</li>
+              <li>Outdoor & industrial-grade access points</li>
+              <li>Guest network segmentation and captive portals</li>
+              <li>IoT VLAN design and device management</li>
+              <li>Location services and analytics integration</li>
+              <li>Managed Wi-Fi with SLA-backed monitoring</li>
+            </ul>
+            <div class="panel-tags">
+              <span class="tag">Wi-Fi 6/6E</span>
+              <span class="tag">Cisco Meraki</span>
+              <span class="tag">Aruba</span>
+              <span class="tag">Ruckus</span>
+            </div>
+          </div>
+          <div class="panel-right">
+            <div class="use-case-card">
+              <h5>Use Case: University Campus</h5>
+              <p>Wi-Fi 6 rollout across Delhi NCR university — 1,200 APs, 25,000 concurrent users, 100% building coverage with roaming.</p>
+            </div>
+            <div class="use-case-card">
+              <h5>Use Case: Hospitality</h5>
+              <p>Hotel group Wi-Fi across 8 properties — per-room bandwidth policies, guest portal, PMS integration, and 99.9% uptime SLA.</p>
+            </div>
+            <div class="use-case-card">
+              <h5>Use Case: Warehouse IoT</h5>
+              <p>Ruckus industrial Wi-Fi for a logistics warehouse — 200+ scanners, forklifts, and IoT sensors with sub-50ms roaming handoff.</p>
+            </div>
+            <div class="cta-banner">
+              <div>
+                <h4>Free RF assessment</h4>
+                <p>We'll identify coverage gaps and performance issues in your facility.</p>
+              </div>
+              <a href="contact.html" class="btn btn-primary">Book RF Survey</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Security -->
+      <div class="tab-panel" id="panel-security">
+        <div class="panel-inner">
+          <div class="panel-text">
+            <div class="service-icon">
+              <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24"><path d="M15 10l4.553-2.069A1 1 0 0121 8.82V15.18a1 1 0 01-1.447.894L15 14M3 8a2 2 0 012-2h10a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2V8z"/></svg>
+            </div>
+            <h2 id="security">Security & <span class="gradient-text-bc">Surveillance</span></h2>
+            <p>Modern physical security is an intelligent, integrated system — not a collection of standalone cameras. Flair Network Systems designs and deploys end-to-end security ecosystems covering IP CCTV surveillance, access control, video analytics, and intrusion detection. Our solutions integrate with your IT infrastructure for centralised management and real-time alerting.</p>
+            <p>From a 10-camera office deployment to a 1,000-camera enterprise campus with AI video analytics, we deliver solutions that are scalable, cyber-secure, and compliant with data protection requirements. We work with Hikvision, Axis, Bosch, HID, and Suprema platforms.</p>
+            <ul class="feature-list">
+              <li>IP CCTV design, supply, and installation</li>
+              <li>4K and PTZ cameras for critical zones</li>
+              <li>Network Video Recorders (NVR) with RAID storage</li>
+              <li>AI-powered video analytics (face recognition, crowd detection)</li>
+              <li>Access control: card, biometric, multi-factor</li>
+              <li>Boom barriers, turnstiles, and perimeter security</li>
+              <li>Intrusion detection and alarm integration</li>
+              <li>24×7 VSOC (Video Security Operations Centre)</li>
+            </ul>
+            <div class="panel-tags">
+              <span class="tag">Hikvision</span>
+              <span class="tag">Axis</span>
+              <span class="tag">HID Access</span>
+              <span class="tag">AI Analytics</span>
+            </div>
+          </div>
+          <div class="panel-right">
+            <div class="use-case-card">
+              <h5>Use Case: Hospital — Mumbai</h5>
+              <p>800-camera IP CCTV system for a tertiary care hospital — AI-powered patient monitoring, biometric access for pharma stores.</p>
+            </div>
+            <div class="use-case-card">
+              <h5>Use Case: Corporate HQ</h5>
+              <p>Integrated access control + CCTV for 5,000-employee HQ — 200 access points, facial recognition entry, active directory integration.</p>
+            </div>
+            <div class="use-case-card">
+              <h5>Use Case: Industrial Perimeter</h5>
+              <p>Perimeter thermal cameras and radar fence for a pharmaceutical plant — PSIM integration with existing SCADA and fire systems.</p>
+            </div>
+            <div class="cta-banner">
+              <div>
+                <h4>Security gap assessment</h4>
+                <p>Identify vulnerabilities in your current physical security posture.</p>
+              </div>
+              <a href="contact.html" class="btn btn-primary">Request Assessment</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ServiceNow -->
+      <div class="tab-panel" id="panel-servicenow">
+        <div class="panel-inner">
+          <div class="panel-text">
+            <div class="service-icon">
+              <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24"><path d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><circle cx="12" cy="12" r="3"/></svg>
+            </div>
+            <h2 id="servicenow">ServiceNow <span class="gradient-text-bc">Consultancy</span></h2>
+            <p>ServiceNow transforms service delivery — but only when implemented correctly. Flair Network Systems brings certified ServiceNow expertise to help enterprises implement, customise, and optimise the platform across ITSM, ITOM, ITAM, HRSD, and CSM. Our consultants have delivered ServiceNow projects across banking, healthcare, IT/ITES, and manufacturing verticals in India.</p>
+            <p>Whether you're starting a greenfield implementation, upgrading from legacy ITSM tools, or looking to improve adoption and ROI on an existing platform, our team delivers outcomes-first engagements with clear milestones, training, and hypercare support.</p>
+            <ul class="feature-list">
+              <li>ITSM implementation (Incident, Problem, Change, CMDB)</li>
+              <li>ITOM Discovery and Service Mapping</li>
+              <li>ITAM (Hardware & Software Asset Management)</li>
+              <li>Custom application development on the Now Platform</li>
+              <li>Workflow automation and integration (REST, MID Server)</li>
+              <li>Performance Analytics and dashboards</li>
+              <li>User training, adoption programmes, and documentation</li>
+              <li>Managed services and platform administration</li>
+            </ul>
+            <div class="panel-tags">
+              <span class="tag">ITSM</span>
+              <span class="tag">ITOM</span>
+              <span class="tag">ITAM</span>
+              <span class="tag">Now Platform</span>
+            </div>
+          </div>
+          <div class="panel-right">
+            <div class="use-case-card">
+              <h5>Use Case: IT/ITES — Bangalore</h5>
+              <p>ServiceNow ITSM + ITOM implementation for a 15,000-seat IT firm — 60% reduction in MTTR, full CMDB populated in 8 weeks.</p>
+            </div>
+            <div class="use-case-card">
+              <h5>Use Case: Banking HRSD</h5>
+              <p>HR Service Delivery implementation for a private bank — onboarding workflows, leave management, and payroll integrations.</p>
+            </div>
+            <div class="use-case-card">
+              <h5>Use Case: Legacy Migration</h5>
+              <p>Migrated a manufacturing enterprise from Remedy to ServiceNow — zero data loss, users trained and live in 12 weeks.</p>
+            </div>
+            <div class="cta-banner">
+              <div>
+                <h4>ServiceNow health check</h4>
+                <p>Assess your current instance for performance, security, and best practices.</p>
+              </div>
+              <a href="contact.html" class="btn btn-primary">Book Health Check</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- AV -->
+      <div class="tab-panel" id="panel-av">
+        <div class="panel-inner">
+          <div class="panel-text">
+            <div class="service-icon">
+              <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24"><path d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+            </div>
+            <h2 id="av">Audio-Visual <span class="gradient-text-bc">Systems</span></h2>
+            <p>Modern workplaces demand seamless collaboration — from boardrooms and huddle spaces to auditoriums and digital signage networks. Flair Network Systems designs and integrates AV systems that just work, every time. Our solutions span Microsoft Teams Rooms, Cisco Webex, and vendor-agnostic unified communications platforms, ensuring your investment works with your existing IT ecosystem.</p>
+            <p>We handle everything from acoustic design and display selection to control system programming and user training. All systems are designed for simplicity: one-touch meeting start, automatic camera tracking, and remote monitoring for proactive support.</p>
+            <ul class="feature-list">
+              <li>Boardroom and conference room AV design & integration</li>
+              <li>Microsoft Teams Rooms & Cisco Webex certified solutions</li>
+              <li>Large format displays, LED walls, and projection</li>
+              <li>Digital signage networks (100+ screens)</li>
+              <li>Distributed audio systems (BGM, PA)</li>
+              <li>Crestron, AMX, Extron control systems</li>
+              <li>Auditorium and town hall AV integration</li>
+              <li>Remote monitoring and managed AV services</li>
+            </ul>
+            <div class="panel-tags">
+              <span class="tag">MS Teams Rooms</span>
+              <span class="tag">Crestron</span>
+              <span class="tag">Digital Signage</span>
+              <span class="tag">LED Walls</span>
+            </div>
+          </div>
+          <div class="panel-right">
+            <div class="use-case-card">
+              <h5>Use Case: Corporate HQ</h5>
+              <p>50-room AV integration for an IT company HQ — all rooms Teams-certified, single management console, 30-second one-touch start.</p>
+            </div>
+            <div class="use-case-card">
+              <h5>Use Case: Auditorium</h5>
+              <p>1,200-seat university auditorium AV — 4K projection, line array audio, confidence monitors, and hybrid streaming capability.</p>
+            </div>
+            <div class="use-case-card">
+              <h5>Use Case: Digital Signage</h5>
+              <p>400-screen digital signage network across a retail chain — centrally managed, cloud-based content updates in under 5 minutes.</p>
+            </div>
+            <div class="cta-banner">
+              <div>
+                <h4>AV design consultation</h4>
+                <p>Let our specialists assess your rooms and propose the right solution.</p>
+              </div>
+              <a href="contact.html" class="btn btn-primary">Get Consultation</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- IT Audits -->
+      <div class="tab-panel" id="panel-audits">
+        <div class="panel-inner">
+          <div class="panel-text">
+            <div class="service-icon">
+              <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/></svg>
+            </div>
+            <h2 id="audits">IT Infrastructure <span class="gradient-text-bc">Audits</span></h2>
+            <p>You can't optimise what you don't understand. Our IT infrastructure audit service delivers a comprehensive, independent assessment of your existing environment — network, cabling, data centre, wireless, and security — against industry best practices, vendor standards, and your business requirements. The result is a clear, prioritised improvement roadmap with commercial impact analysis.</p>
+            <p>Our audits are conducted by senior engineers with 10+ years of hands-on experience. We use professional tooling (Fluke, Ekahau, SolarWinds, Nessus) and deliver structured reports that your IT team and C-suite can both understand and act on. We don't sell the audit and then sell the fix — our findings are always objective.</p>
+            <ul class="feature-list">
+              <li>Network performance and capacity assessments</li>
+              <li>Structured cabling physical inspection and certification review</li>
+              <li>Wi-Fi RF coverage and performance analysis</li>
+              <li>Data centre power, cooling, and capacity audit</li>
+              <li>Security posture assessment (physical + logical)</li>
+              <li>Asset inventory and lifecycle analysis</li>
+              <li>Risk-ranked findings with remediation priorities</li>
+              <li>Executive summary and detailed technical report</li>
+            </ul>
+            <div class="panel-tags">
+              <span class="tag">Network Audit</span>
+              <span class="tag">RF Assessment</span>
+              <span class="tag">DC Audit</span>
+              <span class="tag">Security Review</span>
+            </div>
+          </div>
+          <div class="panel-right">
+            <div class="use-case-card">
+              <h5>Use Case: Pre-Expansion Audit</h5>
+              <p>Audited an IT company's infrastructure before doubling headcount — identified 14 critical gaps, £2.3M capex risk avoided through early remediation.</p>
+            </div>
+            <div class="use-case-card">
+              <h5>Use Case: Regulatory Compliance</h5>
+              <p>IT audit for a private bank ahead of RBI inspection — documented compliance gaps, all findings remediated within 6 weeks.</p>
+            </div>
+            <div class="use-case-card">
+              <h5>Use Case: M&A Due Diligence</h5>
+              <p>Infrastructure due diligence for a PE-backed acquisition — 3-day rapid assessment, executive findings presentation delivered in 5 days.</p>
+            </div>
+            <div class="cta-banner">
+              <div>
+                <h4>Ready to get audited?</h4>
+                <p>Fixed-scope audit packages starting from ₹1.5L for SME environments.</p>
+              </div>
+              <a href="contact.html" class="btn btn-primary">Start Audit</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- end panels -->
+  </div><!-- end tabs-wrapper -->
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <a href="index.html" class="nav-logo">Flair<span>NS</span></a>
+      <p>India's leading IT infrastructure partner since 2004. Building the networks that power modern enterprises.</p>
+    </div>
+    <div class="footer-col">
+      <h5>Services</h5>
+      <ul>
+        <li><a href="services.html#cabling">Structured Cabling</a></li>
+        <li><a href="services.html#sdwan">SD-WAN</a></li>
+        <li><a href="services.html#dc">Data Centres</a></li>
+        <li><a href="services.html#wifi">Wi-Fi Solutions</a></li>
+        <li><a href="services.html#security">Security &amp; CCTV</a></li>
+        <li><a href="services.html#servicenow">ServiceNow</a></li>
+        <li><a href="services.html#av">AV Systems</a></li>
+        <li><a href="services.html#audits">IT Audits</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Company</h5>
+      <ul>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="solutions.html">Industries</a></li>
+        <li><a href="case-studies.html">Case Studies</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Contact</h5>
+      <div class="footer-contact-item">
+        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><circle cx="12" cy="11" r="3"/></svg>
+        <span>Pune, Maharashtra, India</span>
+      </div>
+      <div class="footer-contact-item">
+        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+        <span>info@flairnetworksystems.com</span>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2004–2025 Flair Network Systems. All rights reserved.</p>
+    <div class="footer-badges"><span class="footer-badge">ISO 9001</span><span class="footer-badge">Pan-India</span></div>
+  </div>
+</footer>
+
+<script>
+  // Tab switching
+  document.querySelectorAll('.tab-pill').forEach(pill => {
+    pill.addEventListener('click', () => {
+      const target = pill.dataset.target;
+      document.querySelectorAll('.tab-pill').forEach(p => p.classList.remove('active'));
+      document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+      pill.classList.add('active');
+      const panel = document.getElementById('panel-' + target);
+      if (panel) panel.classList.add('active');
+    });
+  });
+
+  // Hash-based tab activation
+  function activateFromHash() {
+    const hash = location.hash.replace('#', '');
+    if (!hash) return;
+    const pill = document.querySelector(`.tab-pill[data-target="${hash}"]`);
+    if (pill) pill.click();
+  }
+
+  window.addEventListener('hashchange', activateFromHash);
+  document.addEventListener('DOMContentLoaded', activateFromHash);
+</script>
+<script src="shared.js"></script>
+</body>
+</html>

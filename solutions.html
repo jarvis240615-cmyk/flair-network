@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Industry Solutions — Flair Network Systems</title>
+  <meta name="description" content="Domain-specific IT infrastructure solutions for IT/ITES, Banking, Healthcare, Education, Manufacturing, and Retail — tailored for each industry's unique demands." />
+  <link rel="stylesheet" href="shared.css" />
+  <style>
+    /* ── Industry Cards ── */
+    .industries-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    @media (max-width: 900px) { .industries-grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 560px) { .industries-grid { grid-template-columns: 1fr; } }
+
+    .industry-card {
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      position: relative;
+      cursor: none;
+    }
+
+    .industry-card-inner {
+      padding: 2.5rem 2rem;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .industry-number {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 4rem;
+      font-weight: 700;
+      line-height: 1;
+      opacity: 0.05;
+      position: absolute;
+      top: 1rem;
+      right: 1.5rem;
+      pointer-events: none;
+    }
+
+    .industry-icon-wrap {
+      width: 60px; height: 60px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.5rem;
+      flex-shrink: 0;
+    }
+
+    .industry-card:nth-child(1) .industry-icon-wrap { background: rgba(0,102,255,0.15); border: 1px solid rgba(0,102,255,0.3); color: var(--blue); }
+    .industry-card:nth-child(2) .industry-icon-wrap { background: rgba(0,212,255,0.1); border: 1px solid rgba(0,212,255,0.25); color: var(--cyan); }
+    .industry-card:nth-child(3) .industry-icon-wrap { background: rgba(124,58,237,0.12); border: 1px solid rgba(124,58,237,0.25); color: var(--purple); }
+    .industry-card:nth-child(4) .industry-icon-wrap { background: rgba(0,212,255,0.1); border: 1px solid rgba(0,212,255,0.25); color: var(--cyan); }
+    .industry-card:nth-child(5) .industry-icon-wrap { background: rgba(0,102,255,0.15); border: 1px solid rgba(0,102,255,0.3); color: var(--blue); }
+    .industry-card:nth-child(6) .industry-icon-wrap { background: rgba(124,58,237,0.12); border: 1px solid rgba(124,58,237,0.25); color: var(--purple); }
+
+    .industry-card h3 { font-size: 1.3rem; margin-bottom: 0.75rem; }
+
+    .industry-card > .industry-card-inner > p { font-size: 0.9rem; margin-bottom: 1.5rem; }
+
+    .pain-points {
+      margin-bottom: 1.5rem;
+    }
+
+    .pain-points-label {
+      font-size: 0.72rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--muted);
+      margin-bottom: 0.6rem;
+      display: block;
+    }
+
+    .pain-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    .pain-list li {
+      font-size: 0.82rem;
+      color: var(--muted);
+      display: flex;
+      align-items: flex-start;
+      gap: 0.5rem;
+    }
+
+    .pain-list li::before {
+      content: '→';
+      color: var(--cyan);
+      flex-shrink: 0;
+      font-size: 0.75rem;
+      margin-top: 0.1em;
+    }
+
+    .services-applied {
+      margin-top: auto;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .services-applied-label {
+      font-size: 0.72rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--cyan);
+      margin-bottom: 0.7rem;
+      display: block;
+    }
+
+    .service-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+
+    .service-tag {
+      font-size: 0.72rem;
+      padding: 0.25rem 0.6rem;
+      background: rgba(0,102,255,0.08);
+      border: 1px solid rgba(0,102,255,0.2);
+      border-radius: 4px;
+      color: var(--text);
+    }
+
+    /* ── Why Each Industry ── */
+    .comparison-strip {
+      background: var(--bg2);
+      border-top: 1px solid var(--border);
+    }
+
+    .comp-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+    }
+
+    @media (max-width: 768px) { .comp-grid { grid-template-columns: 1fr; } }
+
+    .comp-item {
+      padding: 2.5rem 2rem;
+      border-right: 1px solid var(--border);
+      text-align: center;
+    }
+
+    .comp-item:last-child { border-right: none; }
+
+    .comp-item h4 { margin-bottom: 0.5rem; }
+    .comp-num {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 2.5rem;
+      font-weight: 700;
+      display: block;
+      margin-bottom: 0.25rem;
+    }
+
+    @media (max-width: 768px) {
+      .comp-item { border-right: none; border-bottom: 1px solid var(--border); }
+      .comp-item:last-child { border-bottom: none; }
+    }
+  </style>
+</head>
+<body>
+
+<div id="loader">
+  <div class="loader-logo">Flair<span>NS</span></div>
+  <div class="loader-bar"></div>
+  <div class="loader-text">Loading Solutions...</div>
+</div>
+<div id="cursor"></div>
+<div id="cursor-ring"></div>
+<div id="scroll-progress"></div>
+
+<a href="contact.html" id="float-cta">
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M7.5 8.25h9m-9 3H12m-9.75 1.51c0 1.6 1.123 2.994 2.707 3.227 1.129.166 2.27.293 3.423.379.35.026.67.21.865.501L12 21l2.755-3.645c.195-.29.515-.475.865-.501a48.5 48.5 0 003.423-.379c1.584-.233 2.707-1.626 2.707-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0012 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018z"/></svg>
+  Get a Quote
+</a>
+
+<nav class="nav">
+  <a href="index.html" class="nav-logo">Flair<span>NS</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="solutions.html">Solutions</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="case-studies.html">Case Studies</a></li>
+    <li><a href="contact.html">Contact</a></li>
+    <li><a href="contact.html" class="nav-cta">Get a Quote</a></li>
+  </ul>
+  <button class="nav-hamburger" aria-label="Toggle menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="nav-mobile">
+  <a href="index.html">Home</a>
+  <a href="services.html">Services</a>
+  <a href="solutions.html">Solutions</a>
+  <a href="about.html">About</a>
+  <a href="case-studies.html">Case Studies</a>
+  <a href="contact.html">Contact</a>
+  <a href="contact.html" class="nav-cta" style="margin-top:.5rem;text-align:center;border-radius:8px;padding:.7rem 1rem;">Get a Quote →</a>
+</div>
+
+<!-- Hero -->
+<div class="page-hero">
+  <div class="page-hero-bg"></div>
+  <div class="page-hero-tag">
+    <svg width="12" height="12" fill="currentColor" viewBox="0 0 8 8"><circle cx="4" cy="4" r="4"/></svg>
+    6 Industry Verticals
+  </div>
+  <h1>Solutions Built for<br /><span class="gradient-text">Your Industry.</span></h1>
+  <p>Generic IT infrastructure doesn't cut it. We bring deep domain knowledge to every vertical — understanding your pain points before we propose a solution.</p>
+</div>
+
+<!-- Industries -->
+<section class="section">
+  <div class="section-header">
+    <span class="section-label">Industry Focus</span>
+    <h2>Vertical <span class="gradient-text-bc">Expertise</span></h2>
+    <p>Each industry has unique infrastructure demands, compliance requirements, and operational constraints. Here's how we address them.</p>
+  </div>
+
+  <div class="industries-grid">
+
+    <!-- IT/ITES -->
+    <div class="glass-card industry-card reveal" id="ites" data-delay="0">
+      <span class="industry-number">01</span>
+      <div class="industry-card-inner">
+        <div class="industry-icon-wrap">
+          <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.7" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+        </div>
+        <h3>IT &amp; ITES</h3>
+        <p>Software, GCC, and BPO environments demand ultra-high-density networks with 100% uptime for business continuity. We've built infrastructure for India's largest IT parks.</p>
+        <div class="pain-points">
+          <span class="pain-points-label">Key Challenges</span>
+          <ul class="pain-list">
+            <li>High-density seating (500–10,000+ workstations per floor)</li>
+            <li>24×7 operations with zero planned downtime tolerance</li>
+            <li>Rapid capacity expansion as headcount grows</li>
+            <li>Complex multi-vendor tool landscape (ITSM, ITOM)</li>
+            <li>Data centre efficiency and PUE targets</li>
+          </ul>
+        </div>
+        <div class="services-applied">
+          <span class="services-applied-label">Our Solutions</span>
+          <div class="service-tags">
+            <span class="service-tag">Structured Cabling</span>
+            <span class="service-tag">Data Centre</span>
+            <span class="service-tag">Wi-Fi 6</span>
+            <span class="service-tag">ServiceNow ITSM</span>
+            <span class="service-tag">IT Audits</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Banking -->
+    <div class="glass-card industry-card reveal" id="banking" data-delay="100">
+      <span class="industry-number">02</span>
+      <div class="industry-card-inner">
+        <div class="industry-icon-wrap">
+          <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.7" viewBox="0 0 24 24"><path d="M3 21h18M3 10h18M5 6l7-3 7 3M4 10v11M20 10v11M8 14v3M12 14v3M16 14v3"/></svg>
+        </div>
+        <h3>Banking &amp; Finance</h3>
+        <p>Banks and NBFCs operate under strict RBI regulations with zero tolerance for downtime. Our branch networking and DC solutions are built for the financial sector's unique compliance demands.</p>
+        <div class="pain-points">
+          <span class="pain-points-label">Key Challenges</span>
+          <ul class="pain-list">
+            <li>Multi-site branch connectivity (50–500+ locations)</li>
+            <li>RBI cybersecurity and infrastructure compliance</li>
+            <li>Core banking system latency requirements</li>
+            <li>Physical security at cash-handling areas</li>
+            <li>Legacy MPLS replacement with cost reduction</li>
+          </ul>
+        </div>
+        <div class="services-applied">
+          <span class="services-applied-label">Our Solutions</span>
+          <div class="service-tags">
+            <span class="service-tag">SD-WAN</span>
+            <span class="service-tag">Security &amp; CCTV</span>
+            <span class="service-tag">Structured Cabling</span>
+            <span class="service-tag">IT Audits</span>
+            <span class="service-tag">ServiceNow</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Healthcare -->
+    <div class="glass-card industry-card reveal" id="healthcare" data-delay="200">
+      <span class="industry-number">03</span>
+      <div class="industry-card-inner">
+        <div class="industry-icon-wrap">
+          <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.7" viewBox="0 0 24 24"><path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
+        </div>
+        <h3>Healthcare</h3>
+        <p>Hospitals and diagnostic centres have unique cabling requirements — plenum-rated materials, infection control considerations, and integration with clinical systems like PACS, EMR, and nurse call.</p>
+        <div class="pain-points">
+          <span class="pain-points-label">Key Challenges</span>
+          <ul class="pain-list">
+            <li>High-bandwidth medical imaging (PACS, CT, MRI)</li>
+            <li>Patient data privacy (HIPAA-equivalent) compliance</li>
+            <li>Fire-rated plenum cabling requirements</li>
+            <li>Critical area surveillance (pharmacy, ICU, OT)</li>
+            <li>Roaming Wi-Fi for clinical staff on mobile devices</li>
+          </ul>
+        </div>
+        <div class="services-applied">
+          <span class="services-applied-label">Our Solutions</span>
+          <div class="service-tags">
+            <span class="service-tag">Structured Cabling</span>
+            <span class="service-tag">Wi-Fi Solutions</span>
+            <span class="service-tag">Security &amp; CCTV</span>
+            <span class="service-tag">Access Control</span>
+            <span class="service-tag">AV Systems</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Education -->
+    <div class="glass-card industry-card reveal" id="education" data-delay="0">
+      <span class="industry-number">04</span>
+      <div class="industry-card-inner">
+        <div class="industry-icon-wrap">
+          <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.7" viewBox="0 0 24 24"><path d="M12 14l9-5-9-5-9 5 9 5z"/><path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0112 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"/></svg>
+        </div>
+        <h3>Education</h3>
+        <p>Universities and schools increasingly depend on technology for delivery — from Wi-Fi for thousands of simultaneous students to smart classrooms and distance learning infrastructure.</p>
+        <div class="pain-points">
+          <span class="pain-points-label">Key Challenges</span>
+          <ul class="pain-list">
+            <li>Thousands of concurrent Wi-Fi users (students + IoT)</li>
+            <li>Wide campus coverage including outdoor areas</li>
+            <li>Smart classrooms and lecture capture systems</li>
+            <li>Campus-wide security and access management</li>
+            <li>Budget constraints with long-term infrastructure needs</li>
+          </ul>
+        </div>
+        <div class="services-applied">
+          <span class="services-applied-label">Our Solutions</span>
+          <div class="service-tags">
+            <span class="service-tag">Wi-Fi 6</span>
+            <span class="service-tag">Structured Cabling</span>
+            <span class="service-tag">AV Systems</span>
+            <span class="service-tag">Security &amp; CCTV</span>
+            <span class="service-tag">SD-WAN</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Manufacturing -->
+    <div class="glass-card industry-card reveal" id="manufacturing" data-delay="100">
+      <span class="industry-number">05</span>
+      <div class="industry-card-inner">
+        <div class="industry-icon-wrap">
+          <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.7" viewBox="0 0 24 24"><path d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><circle cx="12" cy="12" r="3"/></svg>
+        </div>
+        <h3>Manufacturing</h3>
+        <p>Factory floors require industrial-grade networking that withstands harsh environments — heat, vibration, dust, and EMI interference — while supporting Industry 4.0 IoT and automation systems.</p>
+        <div class="pain-points">
+          <span class="pain-points-label">Key Challenges</span>
+          <ul class="pain-list">
+            <li>OT/IT network segmentation (SCADA isolation)</li>
+            <li>Industrial-grade Wi-Fi for AGVs and handheld scanners</li>
+            <li>Harsh environment cabling (dust, moisture, vibration)</li>
+            <li>Multi-plant WAN connectivity for ERP</li>
+            <li>Perimeter security for large industrial sites</li>
+          </ul>
+        </div>
+        <div class="services-applied">
+          <span class="services-applied-label">Our Solutions</span>
+          <div class="service-tags">
+            <span class="service-tag">Industrial Wi-Fi</span>
+            <span class="service-tag">SD-WAN</span>
+            <span class="service-tag">Structured Cabling</span>
+            <span class="service-tag">Edge DC</span>
+            <span class="service-tag">Security</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Retail -->
+    <div class="glass-card industry-card reveal" id="retail" data-delay="200">
+      <span class="industry-number">06</span>
+      <div class="industry-card-inner">
+        <div class="industry-icon-wrap">
+          <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.7" viewBox="0 0 24 24"><path d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
+        </div>
+        <h3>Retail &amp; Hospitality</h3>
+        <p>Retail chains and hotel groups need consistent, high-quality connectivity across dozens or hundreds of locations — from POS systems and inventory management to guest Wi-Fi and digital signage.</p>
+        <div class="pain-points">
+          <span class="pain-points-label">Key Challenges</span>
+          <ul class="pain-list">
+            <li>Consistent network across 50–500 distributed sites</li>
+            <li>Guest Wi-Fi with bandwidth management and branding</li>
+            <li>POS network reliability and PCI-DSS compliance</li>
+            <li>Digital signage and in-store AV systems</li>
+            <li>Real-time inventory and analytics visibility</li>
+          </ul>
+        </div>
+        <div class="services-applied">
+          <span class="services-applied-label">Our Solutions</span>
+          <div class="service-tags">
+            <span class="service-tag">SD-WAN</span>
+            <span class="service-tag">Wi-Fi Solutions</span>
+            <span class="service-tag">Digital Signage</span>
+            <span class="service-tag">CCTV</span>
+            <span class="service-tag">Structured Cabling</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- Proof Strip -->
+<div class="comparison-strip">
+  <div class="comp-grid">
+    <div class="comp-item reveal" data-delay="0">
+      <span class="comp-num gradient-text-bc">6</span>
+      <h4>Industry Verticals</h4>
+      <p>Deep domain knowledge, not generic IT</p>
+    </div>
+    <div class="comp-item reveal" data-delay="100">
+      <span class="comp-num gradient-text-bc">18+</span>
+      <h4>States Covered</h4>
+      <p>Pan-India delivery capability</p>
+    </div>
+    <div class="comp-item reveal" data-delay="200">
+      <span class="comp-num gradient-text-bc">500+</span>
+      <h4>Projects Delivered</h4>
+      <p>Across all verticals since 2004</p>
+    </div>
+  </div>
+</div>
+
+<!-- CTA -->
+<section class="section" style="text-align:center;padding:6rem 5%;">
+  <span class="section-label" style="display:block;margin-bottom:.75rem;">Your Industry, Our Expertise</span>
+  <h2 style="margin-bottom:1rem;">Tell Us About<br /><span class="gradient-text">Your Infrastructure Challenge</span></h2>
+  <p style="max-width:500px;margin:0 auto 2.5rem;">Whether you're expanding, upgrading, or starting fresh — our engineers are ready to help design the right solution for your vertical.</p>
+  <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
+    <a href="contact.html" class="btn btn-primary">Start a Conversation →</a>
+    <a href="case-studies.html" class="btn btn-outline">Read Case Studies</a>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <a href="index.html" class="nav-logo">Flair<span>NS</span></a>
+      <p>India's leading IT infrastructure partner since 2004.</p>
+    </div>
+    <div class="footer-col">
+      <h5>Services</h5>
+      <ul>
+        <li><a href="services.html#cabling">Structured Cabling</a></li>
+        <li><a href="services.html#sdwan">SD-WAN</a></li>
+        <li><a href="services.html#dc">Data Centres</a></li>
+        <li><a href="services.html#wifi">Wi-Fi Solutions</a></li>
+        <li><a href="services.html#security">Security</a></li>
+        <li><a href="services.html#servicenow">ServiceNow</a></li>
+        <li><a href="services.html#av">AV Systems</a></li>
+        <li><a href="services.html#audits">IT Audits</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Company</h5>
+      <ul>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="solutions.html">Industries</a></li>
+        <li><a href="case-studies.html">Case Studies</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Contact</h5>
+      <div class="footer-contact-item">
+        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><circle cx="12" cy="11" r="3"/></svg>
+        <span>Pune, Maharashtra, India</span>
+      </div>
+      <div class="footer-contact-item">
+        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+        <span>info@flairnetworksystems.com</span>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2004–2025 Flair Network Systems. All rights reserved.</p>
+    <div class="footer-badges"><span class="footer-badge">ISO 9001</span><span class="footer-badge">Pan-India</span></div>
+  </div>
+</footer>
+
+<script src="shared.js"></script>
+</body>
+</html>

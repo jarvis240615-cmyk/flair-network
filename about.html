@@ -3,803 +3,615 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>About Us — Flair Network Systems | IT Infrastructure Since 2004</title>
-  <meta name="description" content="Flair Network Systems has been India's trusted IT infrastructure partner since 2004. Learn about our history, mission, values, and the team behind our 20+ years of excellence." />
-  <link rel="canonical" href="https://jarvis240615-cmyk.github.io/flair-network/about.html" />
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230066FF'/%3E%3Ccircle cx='16' cy='16' r='4' fill='%2300D4FF'/%3E%3Cline x1='16' y1='4' x2='16' y2='12' stroke='%2300D4FF' stroke-width='2'/%3E%3Cline x1='16' y1='20' x2='16' y2='28' stroke='%2300D4FF' stroke-width='2'/%3E%3Cline x1='4' y1='16' x2='12' y2='16' stroke='%2300D4FF' stroke-width='2'/%3E%3Cline x1='20' y1='16' x2='28' y2='16' stroke='%2300D4FF' stroke-width='2'/%3E%3Ccircle cx='16' cy='4' r='2' fill='%2300D4FF'/%3E%3Ccircle cx='16' cy='28' r='2' fill='%2300D4FF'/%3E%3Ccircle cx='4' cy='16' r='2' fill='%2300D4FF'/%3E%3Ccircle cx='28' cy='16' r='2' fill='%2300D4FF'/%3E%3C/svg%3E" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <title>About Us — Flair Network Systems</title>
+  <meta name="description" content="Meet the team behind Flair Network Systems — 20+ years of enterprise IT infrastructure delivered by founder Satish Kondalkar and a team of certified engineers." />
+  <link rel="stylesheet" href="shared.css" />
   <style>
-    :root {
-      --blue: #0066FF;
-      --cyan: #00D4FF;
-      --dark: #020814;
-      --card: rgba(255,255,255,0.04);
-      --border: rgba(0,212,255,0.15);
-      --text: #e2e8f0;
-      --muted: #94a3b8;
-    }
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
-      font-family: 'Inter', sans-serif;
-      background: var(--dark);
-      color: var(--text);
-      overflow-x: hidden;
-    }
-    nav {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 100;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 20px 60px;
-      background: rgba(2,8,20,0.85);
-      backdrop-filter: blur(20px);
-      border-bottom: 1px solid var(--border);
-    }
-    .logo {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 22px;
-      font-weight: 700;
-      background: linear-gradient(135deg, #fff 0%, var(--cyan) 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      text-decoration: none;
-      letter-spacing: -0.5px;
-    }
-    .logo span { color: var(--cyan); -webkit-text-fill-color: var(--cyan); }
-    .nav-links { display: flex; gap: 36px; list-style: none; }
-    .nav-links a {
-      color: var(--muted);
-      text-decoration: none;
-      font-size: 14px;
-      font-weight: 500;
-      transition: color 0.2s;
-    }
-    .nav-links a:hover { color: var(--cyan); }
-    .nav-cta {
-      background: linear-gradient(135deg, var(--blue), var(--cyan));
-      color: #fff !important;
-      -webkit-text-fill-color: #fff !important;
-      border: none;
-      padding: 10px 24px;
-      border-radius: 8px;
-      font-size: 14px;
-      font-weight: 600;
-      cursor: pointer;
-      text-decoration: none;
-      transition: transform 0.2s, box-shadow 0.2s;
-      display: inline-block;
-    }
-    .nav-cta:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 8px 30px rgba(0,102,255,0.4);
-    }
+    /* ── Timeline ── */
+    .timeline { position: relative; padding-left: 0; }
 
-    /* Page Hero */
-    .page-hero {
-      padding: 140px 60px 80px;
-      text-align: center;
-      background: radial-gradient(ellipse at center top, rgba(0,102,255,0.08) 0%, transparent 60%);
-      border-bottom: 1px solid var(--border);
-    }
-    .page-tag {
-      display: inline-block;
-      font-size: 11px;
-      font-weight: 700;
-      color: var(--cyan);
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      margin-bottom: 16px;
-    }
-    .page-hero h1 {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: clamp(32px, 5vw, 56px);
-      font-weight: 800;
-      letter-spacing: -1.5px;
-      line-height: 1.1;
-      margin-bottom: 16px;
-    }
-    .page-hero h1 span {
-      background: linear-gradient(135deg, #fff 20%, var(--cyan) 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-    .page-hero p {
-      color: var(--muted);
-      font-size: 16px;
-      max-width: 580px;
-      margin: 0 auto;
-      line-height: 1.7;
-    }
-
-    /* Story Section */
-    .story-section {
-      padding: 100px 60px;
-      max-width: 1200px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 80px;
-      align-items: start;
-    }
-    .story-content h2 {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 38px;
-      font-weight: 800;
-      letter-spacing: -1px;
-      line-height: 1.15;
-      margin-bottom: 24px;
-    }
-    .story-content h2 span {
-      background: linear-gradient(135deg, #fff, var(--cyan));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-    .story-content p {
-      color: var(--muted);
-      font-size: 15px;
-      line-height: 1.85;
-      margin-bottom: 20px;
-    }
-    .story-quote {
-      background: var(--card);
-      border-left: 3px solid var(--cyan);
-      border-radius: 0 12px 12px 0;
-      padding: 20px 24px;
-      margin: 28px 0;
-      font-style: italic;
-      color: var(--text);
-      font-size: 15px;
-      line-height: 1.7;
-    }
-    .story-quote cite {
-      display: block;
-      margin-top: 10px;
-      font-size: 13px;
-      font-weight: 600;
-      color: var(--cyan);
-      font-style: normal;
-    }
-
-    /* Timeline */
-    .timeline { padding: 20px 0; }
-    .timeline-item {
-      display: flex;
-      gap: 20px;
-      padding-bottom: 32px;
-      position: relative;
-    }
-    .timeline-item:not(:last-child)::after {
+    .timeline::before {
       content: '';
       position: absolute;
-      left: 20px;
-      top: 44px;
-      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      top: 0; bottom: 0;
       width: 2px;
-      background: linear-gradient(to bottom, var(--cyan), rgba(0,212,255,0.1));
+      background: linear-gradient(180deg, var(--blue), var(--cyan), var(--purple));
+      opacity: 0.3;
     }
-    .timeline-dot {
-      width: 42px; height: 42px;
-      background: linear-gradient(135deg, var(--blue), var(--cyan));
+
+    .tl-item {
+      display: grid;
+      grid-template-columns: 1fr 60px 1fr;
+      gap: 0;
+      margin-bottom: 3rem;
+      align-items: start;
+    }
+
+    .tl-left { text-align: right; padding-right: 2rem; padding-top: 0.25rem; }
+    .tl-right { padding-left: 2rem; padding-top: 0.25rem; }
+
+    .tl-left .tl-content,
+    .tl-right .tl-content {
+      background: var(--glass);
+      backdrop-filter: blur(16px);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      transition: var(--transition);
+    }
+
+    .tl-left .tl-content:hover,
+    .tl-right .tl-content:hover {
+      border-color: rgba(0,212,255,0.25);
+    }
+
+    .tl-center {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0;
+    }
+
+    .tl-dot {
+      width: 44px; height: 44px;
       border-radius: 50%;
+      background: linear-gradient(135deg, var(--blue), var(--cyan));
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 11px;
-      font-weight: 800;
       font-family: 'Space Grotesk', sans-serif;
-      flex-shrink: 0;
-      box-shadow: 0 0 20px rgba(0,212,255,0.3);
-    }
-    .timeline-content {
-      padding-top: 6px;
-    }
-    .timeline-content h3 {
-      font-size: 15px;
       font-weight: 700;
-      margin-bottom: 4px;
-      letter-spacing: -0.2px;
-    }
-    .timeline-content p {
-      color: var(--muted);
-      font-size: 13px;
-      line-height: 1.6;
+      font-size: 0.7rem;
+      color: #fff;
+      flex-shrink: 0;
+      box-shadow: 0 0 16px rgba(0,102,255,0.4);
+      z-index: 1;
     }
 
-    /* Mission Section */
-    .mission-section {
-      padding: 80px 60px;
-      background: rgba(0,102,255,0.02);
+    .tl-year {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: 0.75rem;
+      color: var(--cyan);
+      margin-top: 0.4rem;
+    }
+
+    .tl-content h4 { font-size: 1rem; margin-bottom: 0.4rem; color: var(--text); }
+    .tl-content p { font-size: 0.85rem; }
+
+    /* Odd items: text on right */
+    .tl-item:nth-child(even) .tl-left { grid-column: 3; text-align: left; padding-left: 2rem; padding-right: 0; }
+    .tl-item:nth-child(even) .tl-center { grid-column: 2; }
+    .tl-item:nth-child(even) .tl-right { display: none; }
+    .tl-item:nth-child(odd) .tl-right { grid-column: 3; }
+    .tl-item:nth-child(odd) .tl-left { grid-column: 1; }
+    .tl-item:nth-child(odd) .tl-center { grid-column: 2; }
+
+    @media (max-width: 768px) {
+      .timeline::before { left: 22px; }
+      .tl-item { grid-template-columns: 44px 1fr; gap: 0 1rem; }
+      .tl-item:nth-child(even) .tl-left { grid-column: 2; text-align: left; padding-left: 0; padding-right: 0; }
+      .tl-item:nth-child(odd) .tl-right { grid-column: 2; padding-left: 0; }
+      .tl-center { grid-column: 1 !important; }
+      .tl-left { grid-column: 2 !important; text-align: left !important; padding-right: 0 !important; padding-left: 0 !important; }
+      .tl-right { display: none !important; }
+    }
+
+    /* ── Founder Section ── */
+    .founder-section {
+      background: var(--bg2);
       border-top: 1px solid var(--border);
       border-bottom: 1px solid var(--border);
     }
-    .mission-inner {
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-    .section-header {
-      text-align: center;
-      margin-bottom: 64px;
-    }
-    .section-header h2 {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: clamp(28px, 4vw, 44px);
-      font-weight: 800;
-      letter-spacing: -1px;
-      line-height: 1.1;
-      margin-bottom: 14px;
-    }
-    .section-header p {
-      color: var(--muted);
-      font-size: 16px;
-      max-width: 520px;
-      margin: 0 auto;
-      line-height: 1.7;
-    }
-    .mission-grid {
+
+    .founder-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
-    }
-    .mission-card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 20px;
-      padding: 36px 28px;
-      text-align: center;
-      transition: all 0.3s;
-    }
-    .mission-card:hover {
-      border-color: rgba(0,212,255,0.35);
-      transform: translateY(-6px);
-      box-shadow: 0 20px 50px rgba(0,0,0,0.3);
-    }
-    .mission-icon {
-      font-size: 40px;
-      margin-bottom: 20px;
-    }
-    .mission-card h3 {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 19px;
-      font-weight: 700;
-      margin-bottom: 12px;
-      letter-spacing: -0.3px;
-    }
-    .mission-card p {
-      color: var(--muted);
-      font-size: 14px;
-      line-height: 1.7;
+      grid-template-columns: 380px 1fr;
+      gap: 5rem;
+      align-items: center;
     }
 
-    /* Stats row */
-    .stats-section {
-      padding: 80px 60px;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-    .stats-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 24px;
-    }
-    .stat-card {
-      background: var(--card);
+    @media (max-width: 900px) { .founder-grid { grid-template-columns: 1fr; gap: 3rem; } }
+
+    .founder-card {
+      background: var(--glass);
       border: 1px solid var(--border);
-      border-radius: 20px;
-      padding: 36px 24px;
+      border-radius: var(--radius-lg);
+      padding: 2.5rem;
       text-align: center;
-      transition: all 0.3s;
-    }
-    .stat-card:hover {
-      border-color: rgba(0,212,255,0.3);
-      transform: translateY(-4px);
-    }
-    .stat-num {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 44px;
-      font-weight: 800;
-      background: linear-gradient(135deg, #fff, var(--cyan));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      line-height: 1;
-      margin-bottom: 8px;
-    }
-    .stat-label {
-      font-size: 13px;
-      color: var(--muted);
-      font-weight: 500;
-      letter-spacing: 0.3px;
+      position: relative;
+      overflow: hidden;
     }
 
-    /* Team Section */
-    .team-section {
-      padding: 80px 60px 100px;
-      background: rgba(0,102,255,0.02);
-      border-top: 1px solid var(--border);
+    .founder-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--blue), var(--cyan), var(--purple));
     }
-    .team-inner { max-width: 1200px; margin: 0 auto; }
-    .team-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 24px;
-      margin-top: 60px;
-    }
-    .team-card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 20px;
-      padding: 36px 28px;
-      text-align: center;
-      transition: all 0.3s;
-    }
-    .team-card:hover {
-      border-color: rgba(0,212,255,0.35);
-      transform: translateY(-6px);
-      box-shadow: 0 20px 50px rgba(0,0,0,0.3);
-    }
-    .team-card.featured {
-      border-color: rgba(0,212,255,0.3);
-      background: linear-gradient(135deg, rgba(0,102,255,0.08), rgba(0,212,255,0.05));
-    }
-    .team-avatar {
-      width: 80px; height: 80px;
+
+    .founder-avatar {
+      width: 100px; height: 100px;
       border-radius: 50%;
       background: linear-gradient(135deg, var(--blue), var(--cyan));
       display: flex;
       align-items: center;
       justify-content: center;
       font-family: 'Space Grotesk', sans-serif;
-      font-size: 28px;
-      font-weight: 800;
-      margin: 0 auto 20px;
-      box-shadow: 0 0 30px rgba(0,212,255,0.3);
-    }
-    .team-card h3 {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 18px;
       font-weight: 700;
-      margin-bottom: 4px;
+      font-size: 2rem;
+      color: #fff;
+      margin: 0 auto 1.5rem;
+      box-shadow: 0 0 30px rgba(0,102,255,0.4);
     }
-    .team-role {
-      font-size: 13px;
+
+    .founder-card h3 { font-size: 1.4rem; margin-bottom: 0.3rem; }
+    .founder-card .role { color: var(--cyan); font-size: 0.85rem; font-weight: 600; margin-bottom: 1.5rem; text-transform: uppercase; letter-spacing: 0.08em; }
+
+    .founder-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .founder-stat {
+      background: rgba(0,102,255,0.06);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1rem;
+    }
+
+    .founder-stat .num {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.6rem;
+      font-weight: 700;
       color: var(--cyan);
-      font-weight: 600;
-      margin-bottom: 14px;
     }
-    .team-card p {
-      color: var(--muted);
-      font-size: 13px;
+
+    .founder-stat .lbl { font-size: 0.75rem; color: var(--muted); }
+
+    .founder-bio h2 { margin-bottom: 1.5rem; }
+    .founder-bio p { margin-bottom: 1.25rem; font-size: 1rem; }
+
+    .founder-quote-block {
+      background: rgba(0,102,255,0.06);
+      border-left: 3px solid var(--cyan);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      padding: 1.5rem 1.75rem;
+      margin: 2rem 0;
+    }
+
+    .founder-quote-block p {
+      font-family: 'Space Grotesk', sans-serif;
+      font-style: italic;
+      font-size: 1.05rem;
+      color: var(--text);
+      margin: 0;
       line-height: 1.7;
     }
-    .team-certs {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 6px;
-      margin-top: 16px;
-    }
-    .cert-tag {
-      background: rgba(0,212,255,0.08);
-      border: 1px solid rgba(0,212,255,0.2);
-      color: var(--cyan);
-      font-size: 10px;
-      font-weight: 600;
-      padding: 3px 10px;
-      border-radius: 100px;
-    }
 
-    /* Certs/Partners */
-    .partners-section {
-      padding: 60px;
-      border-top: 1px solid var(--border);
-      text-align: center;
-    }
-    .partners-inner { max-width: 900px; margin: 0 auto; }
-    .partners-section h3 {
-      font-size: 13px;
-      font-weight: 700;
-      color: var(--muted);
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      margin-bottom: 32px;
-    }
-    .certs-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 16px;
-      justify-content: center;
-    }
-    .cert-badge {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 14px 24px;
-      font-size: 14px;
-      font-weight: 600;
-      color: var(--text);
-      transition: all 0.3s;
-    }
-    .cert-badge:hover {
-      border-color: rgba(0,212,255,0.4);
-      color: var(--cyan);
-    }
-
-    /* CTA */
-    .cta-section {
-      padding: 80px 60px 100px;
-    }
-    .cta-box {
-      max-width: 760px;
-      margin: 0 auto;
-      background: linear-gradient(135deg, rgba(0,102,255,0.12), rgba(0,212,255,0.08));
-      border: 1px solid rgba(0,212,255,0.25);
-      border-radius: 28px;
-      padding: 72px 60px;
-      text-align: center;
-    }
-    .cta-box h2 {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 36px;
-      font-weight: 800;
-      letter-spacing: -1px;
-      margin-bottom: 16px;
-    }
-    .cta-box p { color: var(--muted); font-size: 16px; margin-bottom: 36px; line-height: 1.7; }
-    .cta-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
-    .btn-primary {
-      background: linear-gradient(135deg, var(--blue), var(--cyan));
-      color: #fff;
-      border: none;
-      padding: 16px 36px;
-      border-radius: 10px;
-      font-size: 15px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.3s;
-      text-decoration: none;
-      display: inline-block;
-    }
-    .btn-primary:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 20px 50px rgba(0,102,255,0.5);
-    }
-    .btn-outline {
-      background: transparent;
-      color: var(--text);
-      border: 1px solid var(--border);
-      padding: 16px 36px;
-      border-radius: 10px;
-      font-size: 15px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.3s;
-      text-decoration: none;
-      display: inline-block;
-    }
-    .btn-outline:hover {
-      border-color: var(--cyan);
-      color: var(--cyan);
-      background: rgba(0,212,255,0.05);
-    }
-
-    footer {
-      padding: 60px;
-      border-top: 1px solid var(--border);
+    /* ── Values ── */
+    .values-grid {
       display: grid;
-      grid-template-columns: 2fr 1fr 1fr 1fr;
-      gap: 48px;
-      max-width: 1400px;
-      margin: 0 auto;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
     }
-    .footer-brand p { color: var(--muted); font-size: 14px; line-height: 1.7; max-width: 280px; }
-    .footer-col h3 {
-      font-size: 13px;
-      font-weight: 700;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-      color: var(--cyan);
-      margin-bottom: 20px;
-    }
-    .footer-col a {
-      display: block;
-      color: var(--muted);
-      font-size: 14px;
-      text-decoration: none;
-      margin-bottom: 12px;
-      transition: color 0.2s;
-    }
-    .footer-col a:hover { color: var(--text); }
-    .footer-bottom {
-      border-top: 1px solid var(--border);
-      padding: 24px 60px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      color: var(--muted);
-      font-size: 13px;
-      flex-wrap: wrap;
-      gap: 8px;
-    }
-    .footer-bottom a { color: var(--cyan); text-decoration: none; }
 
-    @media (max-width: 900px) {
-      nav { padding: 16px 24px; }
-      .nav-links { display: none; }
-      .page-hero { padding: 100px 24px 60px; }
-      .story-section { grid-template-columns: 1fr; padding: 60px 24px; gap: 48px; }
-      .mission-section, .stats-section, .team-section, .partners-section, .cta-section { padding: 60px 24px; }
-      .mission-grid, .stats-grid { grid-template-columns: 1fr 1fr; }
-      footer { padding: 40px 24px; grid-template-columns: 1fr 1fr; }
-      .footer-bottom { padding: 20px 24px; }
-      .cta-box { padding: 48px 28px; }
+    @media (max-width: 900px) { .values-grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 500px) { .values-grid { grid-template-columns: 1fr; } }
+
+    .value-card {
+      padding: 2rem;
+      text-align: center;
     }
+
+    .value-icon {
+      width: 56px; height: 56px;
+      margin: 0 auto 1.25rem;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .value-card:nth-child(1) .value-icon { background: rgba(0,102,255,0.15); border: 1px solid rgba(0,102,255,0.3); color: var(--blue); }
+    .value-card:nth-child(2) .value-icon { background: rgba(0,212,255,0.1); border: 1px solid rgba(0,212,255,0.25); color: var(--cyan); }
+    .value-card:nth-child(3) .value-icon { background: rgba(124,58,237,0.12); border: 1px solid rgba(124,58,237,0.25); color: var(--purple); }
+    .value-card:nth-child(4) .value-icon { background: rgba(0,212,255,0.1); border: 1px solid rgba(0,212,255,0.25); color: var(--cyan); }
+
+    .value-card h4 { margin-bottom: 0.5rem; }
+
+    /* ── Certs ── */
+    .certs-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.25rem;
+    }
+
+    @media (max-width: 768px) { .certs-grid { grid-template-columns: 1fr 1fr; } }
+
+    .cert-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 1.75rem 1rem;
+      gap: 0.75rem;
+    }
+
+    .cert-badge {
+      width: 56px; height: 56px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, rgba(0,102,255,0.2), rgba(0,212,255,0.15));
+      border: 2px solid rgba(0,212,255,0.25);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+    }
+
+    .cert-card h5 { font-size: 0.9rem; font-family: 'Space Grotesk', sans-serif; }
+    .cert-card p { font-size: 0.8rem; margin: 0; }
   </style>
 </head>
 <body>
 
-<!-- Nav -->
-<nav>
-  <a class="logo" href="index.html">Flair<span>NS</span></a>
+<div id="loader">
+  <div class="loader-logo">Flair<span>NS</span></div>
+  <div class="loader-bar"></div>
+  <div class="loader-text">Loading...</div>
+</div>
+<div id="cursor"></div>
+<div id="cursor-ring"></div>
+<div id="scroll-progress"></div>
+
+<a href="contact.html" id="float-cta">
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M7.5 8.25h9m-9 3H12m-9.75 1.51c0 1.6 1.123 2.994 2.707 3.227 1.129.166 2.27.293 3.423.379.35.026.67.21.865.501L12 21l2.755-3.645c.195-.29.515-.475.865-.501a48.5 48.5 0 003.423-.379c1.584-.233 2.707-1.626 2.707-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0012 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018z"/></svg>
+  Get a Quote
+</a>
+
+<nav class="nav">
+  <a href="index.html" class="nav-logo">Flair<span>NS</span></a>
   <ul class="nav-links">
-    <li><a href="index.html#services">Services</a></li>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="solutions.html">Solutions</a></li>
     <li><a href="about.html">About</a></li>
-    <li><a href="index.html#industries">Industries</a></li>
+    <li><a href="case-studies.html">Case Studies</a></li>
     <li><a href="contact.html">Contact</a></li>
+    <li><a href="contact.html" class="nav-cta">Get a Quote</a></li>
   </ul>
-  <a class="nav-cta" href="contact.html">Get a Quote</a>
+  <button class="nav-hamburger" aria-label="Toggle menu">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
+<div class="nav-mobile">
+  <a href="index.html">Home</a>
+  <a href="services.html">Services</a>
+  <a href="solutions.html">Solutions</a>
+  <a href="about.html">About</a>
+  <a href="case-studies.html">Case Studies</a>
+  <a href="contact.html">Contact</a>
+  <a href="contact.html" class="nav-cta" style="margin-top:.5rem;text-align:center;border-radius:8px;padding:.7rem 1rem;">Get a Quote →</a>
+</div>
 
-<!-- Page Hero -->
+<!-- Hero -->
 <div class="page-hero">
-  <span class="page-tag">Our Story</span>
-  <h1><span>About Flair Network Systems</span></h1>
-  <p>Two decades of building the IT infrastructure that powers India's most critical enterprises — from banks to hospitals, campuses to data centres.</p>
+  <div class="page-hero-bg"></div>
+  <div class="page-hero-tag">
+    <svg width="12" height="12" fill="currentColor" viewBox="0 0 8 8"><circle cx="4" cy="4" r="4"/></svg>
+    Est. 2004 · Pune, India
+  </div>
+  <h1>Two Decades of<br /><span class="gradient-text">Building Better Networks.</span></h1>
+  <p>From a two-person startup in Pune to India's trusted IT infrastructure partner — the story of Flair Network Systems.</p>
 </div>
 
-<!-- Story + Timeline -->
-<div class="story-section">
-
-  <div class="story-content">
-    <h2>Built on Trust. <span>Delivered with Precision.</span></h2>
-    <p>
-      Flair Network Systems was established in 2004 with a singular vision: to provide enterprise organisations across India with world-class IT infrastructure that they could depend on. What began as a structured cabling specialist has grown into a comprehensive IT infrastructure company serving clients in banking, healthcare, government, manufacturing, and beyond.
-    </p>
-    <p>
-      Over the past two decades, we have deployed over 200,000 connections, supported 70+ long-term enterprise clients, and built a reputation for technical excellence, reliable delivery, and unmatched post-implementation support.
-    </p>
-    <blockquote class="story-quote">
-      "Technology is the foundation of every modern business, and its reliability plays a critical role in performance, security, and growth. We don't just build networks — we build the backbone of businesses."
-      <cite>— Satish Kondalkar, Founder &amp; CEO, Flair Network Systems</cite>
-    </blockquote>
-    <p>
-      Today, Flair Network Systems is ISO 9001:2015 certified and holds partnerships with industry leaders including Cisco, Aruba, Panduit, and Fortinet. We continue to expand our service portfolio — from SD-WAN and Wi-Fi 6 deployments to ServiceNow consultancy and data centre managed services.
-    </p>
+<!-- Timeline -->
+<section class="section">
+  <div class="section-header">
+    <span class="section-label">Our Journey</span>
+    <h2>A <span class="gradient-text-bc">20-Year</span> Story</h2>
   </div>
-
   <div class="timeline">
-    <div class="timeline-item">
-      <div class="timeline-dot">04</div>
-      <div class="timeline-content">
-        <h3>Founded in 2004</h3>
-        <p>Flair Network Systems established in India, initially specialising in structured cabling and passive networking for enterprise clients.</p>
-      </div>
-    </div>
-    <div class="timeline-item">
-      <div class="timeline-dot">08</div>
-      <div class="timeline-content">
-        <h3>Cisco Partnership</h3>
-        <p>Achieved Cisco Certified Partner status, enabling us to deliver and support enterprise-grade active networking solutions.</p>
-      </div>
-    </div>
-    <div class="timeline-item">
-      <div class="timeline-dot">12</div>
-      <div class="timeline-content">
-        <h3>Data Centre Practice Launched</h3>
-        <p>Expanded into data centre design and infrastructure, serving major banks and enterprises with mission-critical deployments.</p>
-      </div>
-    </div>
-    <div class="timeline-item">
-      <div class="timeline-dot">16</div>
-      <div class="timeline-content">
-        <h3>ISO 9001:2015 Certification</h3>
-        <p>Achieved ISO 9001:2015 certification, formalising our commitment to quality management across all service lines.</p>
-      </div>
-    </div>
-    <div class="timeline-item">
-      <div class="timeline-dot">20</div>
-      <div class="timeline-content">
-        <h3>SD-WAN &amp; ServiceNow</h3>
-        <p>Launched SD-WAN and ServiceNow consultancy practices, adding cloud-ready and ITSM capabilities to our portfolio.</p>
-      </div>
-    </div>
-    <div class="timeline-item">
-      <div class="timeline-dot">24</div>
-      <div class="timeline-content">
-        <h3>20 Years of Excellence</h3>
-        <p>Celebrating two decades of trusted partnerships, 200,000+ connections deployed, and 99.9% uptime delivered.</p>
-      </div>
-    </div>
-  </div>
 
-</div>
-
-<!-- Mission, Vision, Values -->
-<div class="mission-section">
-  <div class="mission-inner">
-    <div class="section-header">
-      <span class="page-tag">What Drives Us</span>
-      <h2>Mission, Vision &amp; Values</h2>
-      <p class="section-desc">The principles that guide every project, every partnership, and every decision we make.</p>
-    </div>
-    <div class="mission-grid">
-      <div class="mission-card">
-        <div class="mission-icon">🎯</div>
-        <h3>Our Mission</h3>
-        <p>To deliver reliable, scalable, and secure IT infrastructure solutions that form the foundation of modern business operations — enabling our clients to perform, grow, and compete with confidence.</p>
-      </div>
-      <div class="mission-card">
-        <div class="mission-icon">🔭</div>
-        <h3>Our Vision</h3>
-        <p>To be India's most trusted IT infrastructure partner — known not just for technical excellence, but for the lasting relationships we build with every client we serve.</p>
-      </div>
-      <div class="mission-card">
-        <div class="mission-icon">💡</div>
-        <h3>Our Values</h3>
-        <p>Integrity in every recommendation. Precision in every deployment. Accountability in every commitment. We deliver what we promise, and we stand behind our work long after handover.</p>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- Stats -->
-<div class="stats-section">
-  <div class="stats-grid">
-    <div class="stat-card">
-      <div class="stat-num">2004</div>
-      <div class="stat-label">Year Established</div>
-    </div>
-    <div class="stat-card">
-      <div class="stat-num">200K+</div>
-      <div class="stat-label">Connections Deployed</div>
-    </div>
-    <div class="stat-card">
-      <div class="stat-num">70+</div>
-      <div class="stat-label">Enterprise Clients</div>
-    </div>
-    <div class="stat-card">
-      <div class="stat-num">99.9%</div>
-      <div class="stat-label">Uptime Delivered</div>
-    </div>
-  </div>
-</div>
-
-<!-- Team Section -->
-<div class="team-section">
-  <div class="team-inner">
-    <div class="section-header">
-      <span class="page-tag">Our Team</span>
-      <h2>The People Behind Flair NS</h2>
-      <p class="section-desc">Experienced professionals dedicated to delivering infrastructure excellence across every engagement.</p>
-    </div>
-    <div class="team-grid">
-
-      <div class="team-card featured">
-        <div class="team-avatar">SK</div>
-        <h3>Satish Kondalkar</h3>
-        <div class="team-role">Founder &amp; CEO</div>
-        <p>With over 20 years of experience in IT infrastructure, Satish founded Flair Network Systems in 2004 with a vision to build India's most reliable enterprise networking company. He leads the company's strategic direction, key client relationships, and technology partnerships.</p>
-        <div class="team-certs">
-          <span class="cert-tag">20+ Years IT</span>
-          <span class="cert-tag">Cisco Certified</span>
-          <span class="cert-tag">ISO 9001</span>
+    <div class="tl-item reveal">
+      <div class="tl-left">
+        <div class="tl-content">
+          <h4>Founded in Pune</h4>
+          <p>Satish Kondalkar establishes Flair Network Systems with a clear vision: to deliver enterprise-grade IT infrastructure with the reliability and attention that growing Indian businesses deserve.</p>
         </div>
       </div>
+      <div class="tl-center">
+        <div class="tl-dot">✦</div>
+        <span class="tl-year">2004</span>
+      </div>
+      <div class="tl-right"></div>
+    </div>
 
-      <div class="team-card">
-        <div class="team-avatar">PS</div>
-        <h3>Pradeep Sharma</h3>
-        <div class="team-role">Head of Engineering</div>
-        <p>Leads our technical delivery teams across structured cabling, data centre, and active networking projects. Expert in large-scale enterprise deployments with a zero-downtime methodology.</p>
-        <div class="team-certs">
-          <span class="cert-tag">CCNP</span>
-          <span class="cert-tag">Aruba Certified</span>
+    <div class="tl-item reveal">
+      <div class="tl-left"></div>
+      <div class="tl-center">
+        <div class="tl-dot">✦</div>
+        <span class="tl-year">2008</span>
+      </div>
+      <div class="tl-right">
+        <div class="tl-content">
+          <h4>First Major Enterprise Client</h4>
+          <p>Secured first large enterprise structured cabling project — a 3,000-seat IT campus in Hinjewadi, Pune. Delivered on time, setting the standard for all future projects.</p>
         </div>
       </div>
+    </div>
 
-      <div class="team-card">
-        <div class="team-avatar">AM</div>
-        <h3>Anita Mehta</h3>
-        <div class="team-role">Project Manager</div>
-        <p>Ensures every engagement is delivered on time, within budget, and to the highest quality standards. 12+ years of IT project management experience across banking and healthcare sectors.</p>
-        <div class="team-certs">
-          <span class="cert-tag">PMP Certified</span>
-          <span class="cert-tag">ITIL</span>
+    <div class="tl-item reveal">
+      <div class="tl-left">
+        <div class="tl-content">
+          <h4>Data Centre Practice Launch</h4>
+          <p>Expanded into data centre infrastructure. Built first Tier III data centre for a Pune-based financial services firm, establishing deep DC expertise.</p>
         </div>
       </div>
+      <div class="tl-center">
+        <div class="tl-dot">✦</div>
+        <span class="tl-year">2011</span>
+      </div>
+      <div class="tl-right"></div>
+    </div>
 
-      <div class="team-card">
-        <div class="team-avatar">RK</div>
-        <h3>Rahul Kumar</h3>
-        <div class="team-role">SD-WAN &amp; Cloud Architect</div>
-        <p>Specialises in software-defined networking, SD-WAN, and cloud infrastructure. Leads our next-generation connectivity practice and multi-cloud integration engagements.</p>
-        <div class="team-certs">
-          <span class="cert-tag">SD-WAN Expert</span>
-          <span class="cert-tag">AWS Certified</span>
+    <div class="tl-item reveal">
+      <div class="tl-left"></div>
+      <div class="tl-center">
+        <div class="tl-dot">✦</div>
+        <span class="tl-year">2015</span>
+      </div>
+      <div class="tl-right">
+        <div class="tl-content">
+          <h4>Security & AV Expansion</h4>
+          <p>Added Security & Surveillance and Audio-Visual Systems to the portfolio. Completed 100th project milestone — a corporate campus in Bangalore.</p>
         </div>
       </div>
+    </div>
 
+    <div class="tl-item reveal">
+      <div class="tl-left">
+        <div class="tl-content">
+          <h4>SD-WAN Practice & ServiceNow</h4>
+          <p>Invested heavily in SD-WAN capabilities and ServiceNow certifications as India's enterprise market shifted to cloud-first architectures.</p>
+        </div>
+      </div>
+      <div class="tl-center">
+        <div class="tl-dot">✦</div>
+        <span class="tl-year">2019</span>
+      </div>
+      <div class="tl-right"></div>
+    </div>
+
+    <div class="tl-item reveal">
+      <div class="tl-left"></div>
+      <div class="tl-center">
+        <div class="tl-dot">✦</div>
+        <span class="tl-year">2021</span>
+      </div>
+      <div class="tl-right">
+        <div class="tl-content">
+          <h4>500+ Projects Milestone</h4>
+          <p>Delivered our 500th project — a 25,000-seat tech park in Hyderabad. Pan-India presence established with projects in 18 states.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="tl-item reveal">
+      <div class="tl-left">
+        <div class="tl-content">
+          <h4>Wi-Fi 6 & Edge DC Excellence</h4>
+          <p>Completed India's largest Wi-Fi 6 university deployment (Delhi NCR) and launched edge data centre practice for manufacturing clients.</p>
+        </div>
+      </div>
+      <div class="tl-center">
+        <div class="tl-dot">✦</div>
+        <span class="tl-year">2023</span>
+      </div>
+      <div class="tl-right"></div>
+    </div>
+
+    <div class="tl-item reveal">
+      <div class="tl-left"></div>
+      <div class="tl-center">
+        <div class="tl-dot">★</div>
+        <span class="tl-year">Today</span>
+      </div>
+      <div class="tl-right">
+        <div class="tl-content">
+          <h4>India's Trusted IT Infrastructure Partner</h4>
+          <p>8 service lines. 500+ projects. 20+ years. Continuing to build the infrastructure that powers India's enterprises — with the same commitment to quality that started it all.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- Founder -->
+<section class="section founder-section">
+  <div class="founder-grid">
+    <div class="founder-card reveal-left">
+      <div class="founder-avatar">SK</div>
+      <h3>Satish Kondalkar</h3>
+      <div class="role">Founder &amp; CEO</div>
+      <p style="font-size:.875rem;line-height:1.6;">Satish brings 25+ years of hands-on IT infrastructure experience. His engineering discipline and client-first philosophy have been the guiding force behind every project Flair Network Systems has delivered.</p>
+      <div class="founder-stats">
+        <div class="founder-stat">
+          <div class="num">25+</div>
+          <div class="lbl">Years Exp.</div>
+        </div>
+        <div class="founder-stat">
+          <div class="num">500+</div>
+          <div class="lbl">Projects Led</div>
+        </div>
+        <div class="founder-stat">
+          <div class="num">8</div>
+          <div class="lbl">Service Lines</div>
+        </div>
+        <div class="founder-stat">
+          <div class="num">18+</div>
+          <div class="lbl">States Served</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="founder-bio reveal-right">
+      <span class="section-label">Leadership</span>
+      <h2>The Vision Behind<br /><span class="gradient-text-bc">Every Network</span></h2>
+      <p>Satish Kondalkar founded Flair Network Systems in 2004 with a conviction that Indian enterprises deserved IT infrastructure partners who truly understood their business — not just vendors who sold boxes and walked away.</p>
+      <p>His approach has always been to start with business objectives, design backwards to the infrastructure, and deliver with obsessive attention to quality and documentation. This philosophy has created an organisation where engineers think like business partners and project managers think like engineers.</p>
+      <div class="founder-quote-block">
+        <p>"Technology is the foundation of every modern business, and its reliability plays a critical role in performance, security, and growth. We work closely with our clients as a trusted technology partner, delivering secure and scalable solutions. Every solution is designed with a clear focus on stability, efficiency, and long-term business value."</p>
+      </div>
+      <p>Under Satish's leadership, the company has grown from a two-person cabling shop to an 80+ engineer organisation serving Fortune 500 companies, leading PSUs, and high-growth startups — all while maintaining the responsiveness and personal attention of a boutique firm.</p>
     </div>
   </div>
-</div>
+</section>
 
-<!-- Certifications & Partners -->
-<div class="partners-section">
-  <div class="partners-inner">
-    <h3>Certifications &amp; Technology Partners</h3>
-    <div class="certs-row">
-      <span class="cert-badge">🏅 ISO 9001:2015 Certified</span>
-      <span class="cert-badge">🔵 Cisco Certified Partner</span>
-      <span class="cert-badge">🟢 Aruba Certified</span>
-      <span class="cert-badge">🟠 Panduit Certified</span>
-      <span class="cert-badge">🔴 Fortinet Partner</span>
-      <span class="cert-badge">⚫ ServiceNow Partner</span>
+<!-- Values -->
+<section class="section">
+  <div class="section-header">
+    <span class="section-label">What We Stand For</span>
+    <h2>Core <span class="gradient-text-bc">Values</span></h2>
+    <p>The principles that guide every decision, project, and client interaction.</p>
+  </div>
+  <div class="values-grid">
+    <div class="glass-card value-card reveal" data-delay="0">
+      <div class="value-icon">
+        <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+      </div>
+      <h4>Integrity First</h4>
+      <p style="font-size:.875rem;">We give honest advice, even when it means recommending a cheaper solution. Our long-term relationships are built on trust, not transactions.</p>
+    </div>
+    <div class="glass-card value-card reveal" data-delay="100">
+      <div class="value-icon">
+        <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+      </div>
+      <h4>Engineering Excellence</h4>
+      <p style="font-size:.875rem;">Every design is reviewed, every installation is tested, every cable is certified. No shortcuts — because your infrastructure shouldn't have to be reworked.</p>
+    </div>
+    <div class="glass-card value-card reveal" data-delay="200">
+      <div class="value-icon">
+        <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+      </div>
+      <h4>Client Partnership</h4>
+      <p style="font-size:.875rem;">We embed ourselves in your team. Our success is measured not by projects completed but by networks that perform flawlessly, year after year.</p>
+    </div>
+    <div class="glass-card value-card reveal" data-delay="300">
+      <div class="value-icon">
+        <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M7 16V4m0 0L3 8m4-4l4 4m6 0v12m0 0l4-4m-4 4l-4-4"/></svg>
+      </div>
+      <h4>Continuous Growth</h4>
+      <p style="font-size:.875rem;">We invest in certifications, technology partnerships, and talent development so our clients always have access to the latest solutions and expertise.</p>
     </div>
   </div>
-</div>
+</section>
 
-<!-- CTA -->
-<div class="cta-section">
-  <div class="cta-box">
-    <span class="page-tag">Work With Us</span>
-    <h2>Ready to Build Your Infrastructure?</h2>
-    <p>Talk to our experts today. Free consultation, detailed proposal, zero obligation. Let's see what we can build together.</p>
-    <div class="cta-btns">
-      <a class="btn-primary" href="contact.html">Contact Us Today</a>
-      <a class="btn-outline" href="index.html#services">View Our Services</a>
+<!-- Certifications -->
+<section class="section" style="background:var(--bg2);border-top:1px solid var(--border);">
+  <div class="section-header">
+    <span class="section-label">Qualifications</span>
+    <h2>Certifications &amp; <span class="gradient-text-bc">Partnerships</span></h2>
+    <p>Our engineers hold industry-recognised certifications from leading technology vendors and standards bodies.</p>
+  </div>
+  <div class="certs-grid">
+    <div class="glass-card cert-card reveal" data-delay="0">
+      <div class="cert-badge">🏅</div>
+      <h5>Cisco Certified</h5>
+      <p>CCNA, CCNP, SD-WAN specialisation</p>
+    </div>
+    <div class="glass-card cert-card reveal" data-delay="80">
+      <div class="cert-badge">🔐</div>
+      <h5>ISO 9001:2015</h5>
+      <p>Quality management system certification</p>
+    </div>
+    <div class="glass-card cert-card reveal" data-delay="160">
+      <div class="cert-badge">⚡</div>
+      <h5>BICSI RCDD</h5>
+      <p>Registered Communications Distribution Designer</p>
+    </div>
+    <div class="glass-card cert-card reveal" data-delay="240">
+      <div class="cert-badge">☁️</div>
+      <h5>ServiceNow CSA</h5>
+      <p>Certified System Administrator</p>
+    </div>
+    <div class="glass-card cert-card reveal" data-delay="0">
+      <div class="cert-badge">📡</div>
+      <h5>Fortinet NSE</h5>
+      <p>Network Security Expert — Level 5+</p>
+    </div>
+    <div class="glass-card cert-card reveal" data-delay="80">
+      <div class="cert-badge">🔵</div>
+      <h5>Aruba ACEP</h5>
+      <p>Aruba Certified Edge Professional</p>
+    </div>
+    <div class="glass-card cert-card reveal" data-delay="160">
+      <div class="cert-badge">📹</div>
+      <h5>Axis Certified</h5>
+      <p>Professional installation partner</p>
+    </div>
+    <div class="glass-card cert-card reveal" data-delay="240">
+      <div class="cert-badge">🏢</div>
+      <h5>Fluke Authorised</h5>
+      <p>DSX-8000 certified testing partner</p>
     </div>
   </div>
-</div>
+</section>
 
 <!-- Footer -->
-<footer>
-  <div class="footer-brand">
-    <a class="logo" href="index.html" style="display:block; margin-bottom:16px;">Flair<span>NS</span></a>
-    <p>India's leading IT infrastructure partner — building networks, securing connections, and empowering businesses since 2004.</p>
+<footer class="footer">
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <a href="index.html" class="nav-logo">Flair<span>NS</span></a>
+      <p>India's leading IT infrastructure partner since 2004. Building the networks that power modern enterprises.</p>
+    </div>
+    <div class="footer-col">
+      <h5>Services</h5>
+      <ul>
+        <li><a href="services.html#cabling">Structured Cabling</a></li>
+        <li><a href="services.html#sdwan">SD-WAN</a></li>
+        <li><a href="services.html#dc">Data Centres</a></li>
+        <li><a href="services.html#wifi">Wi-Fi Solutions</a></li>
+        <li><a href="services.html#security">Security &amp; CCTV</a></li>
+        <li><a href="services.html#servicenow">ServiceNow</a></li>
+        <li><a href="services.html#av">AV Systems</a></li>
+        <li><a href="services.html#audits">IT Audits</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Company</h5>
+      <ul>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="solutions.html">Industries</a></li>
+        <li><a href="case-studies.html">Case Studies</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Contact</h5>
+      <div class="footer-contact-item">
+        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><circle cx="12" cy="11" r="3"/></svg>
+        <span>Pune, Maharashtra, India</span>
+      </div>
+      <div class="footer-contact-item">
+        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+        <span>info@flairnetworksystems.com</span>
+      </div>
+    </div>
   </div>
-  <div class="footer-col">
-    <h3>Services</h3>
-    <a href="index.html#services">Structured Cabling</a>
-    <a href="index.html#services">Data Centre</a>
-    <a href="index.html#services">SD-WAN</a>
-    <a href="index.html#services">Wi-Fi Solutions</a>
-    <a href="index.html#services">Security &amp; CCTV</a>
-  </div>
-  <div class="footer-col">
-    <h3>Company</h3>
-    <a href="about.html">About Us</a>
-    <a href="index.html#why">Why Flair NS</a>
-    <a href="index.html#industries">Industries</a>
-    <a href="index.html#process">Our Process</a>
-  </div>
-  <div class="footer-col">
-    <h3>Contact</h3>
-    <a href="mailto:info@flairnetworksystems.com">info@flairnetworksystems.com</a>
-    <a href="contact.html">Contact Us</a>
-    <a href="about.html">About Us</a>
-    <a href="privacy-policy.html">Privacy Policy</a>
+  <div class="footer-bottom">
+    <p>&copy; 2004–2025 Flair Network Systems. All rights reserved.</p>
+    <div class="footer-badges"><span class="footer-badge">ISO 9001</span><span class="footer-badge">Pan-India</span></div>
   </div>
 </footer>
-<div class="footer-bottom">
-  <span>© 2025 Flair Network Systems. All rights reserved.</span>
-  <span>
-    <a href="privacy-policy.html">Privacy Policy</a> &nbsp;·&nbsp;
-    <a href="contact.html">Contact</a> &nbsp;·&nbsp;
-    ISO 9001:2015 Certified &nbsp;·&nbsp; Made in India 🇮🇳
-  </span>
-</div>
 
+<script src="shared.js"></script>
 </body>
 </html>

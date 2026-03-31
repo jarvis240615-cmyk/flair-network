@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Case Studies — Flair Network Systems</title>
+  <meta name="description" content="Real-world IT infrastructure case studies from Flair Network Systems — SD-WAN, Data Centres, Wi-Fi, Security, Cabling, and ServiceNow deployments across India." />
+  <link rel="stylesheet" href="shared.css" />
+  <style>
+    /* ── Filter Pills ── */
+    .filter-bar {
+      display: flex;
+      gap: 0.6rem;
+      flex-wrap: wrap;
+      margin-bottom: 3rem;
+    }
+
+    .filter-pill {
+      padding: 0.5rem 1.1rem;
+      border-radius: 50px;
+      border: 1px solid var(--border);
+      background: transparent;
+      color: var(--muted);
+      font-size: 0.82rem;
+      font-weight: 500;
+      cursor: none;
+      transition: var(--transition);
+      font-family: 'Space Grotesk', sans-serif;
+    }
+
+    .filter-pill:hover { border-color: rgba(0,212,255,0.3); color: var(--text); }
+    .filter-pill.active { background: rgba(0,102,255,0.12); border-color: var(--blue); color: var(--cyan); }
+
+    /* ── Case Study Cards ── */
+    .cs-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    @media (max-width: 1024px) { .cs-grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 600px)  { .cs-grid { grid-template-columns: 1fr; } }
+
+    .cs-card {
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    .cs-header {
+      padding: 1.75rem 1.75rem 1.25rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .cs-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
+
+    .cs-industry {
+      font-size: 0.72rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--cyan);
+    }
+
+    .cs-location {
+      font-size: 0.75rem;
+      color: var(--muted);
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    .cs-header h3 { font-size: 1.05rem; line-height: 1.35; }
+
+    .cs-body {
+      padding: 1.25rem 1.75rem;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .cs-section-label {
+      font-size: 0.68rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--muted);
+      margin-bottom: 0.35rem;
+      display: block;
+    }
+
+    .cs-text { font-size: 0.84rem; line-height: 1.65; }
+
+    /* ── Metrics ── */
+    .cs-metrics {
+      padding: 1.25rem 1.75rem;
+      background: rgba(0,102,255,0.04);
+      border-top: 1px solid var(--border);
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.75rem;
+    }
+
+    .metric {
+      text-align: center;
+    }
+
+    .metric-num {
+      display: block;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.4rem;
+      font-weight: 700;
+      line-height: 1;
+      margin-bottom: 0.2rem;
+    }
+
+    .metric-label {
+      font-size: 0.68rem;
+      color: var(--muted);
+      line-height: 1.3;
+    }
+
+    .cs-card:nth-child(1) .metric-num { color: var(--cyan); }
+    .cs-card:nth-child(2) .metric-num { color: var(--blue); }
+    .cs-card:nth-child(3) .metric-num { color: var(--purple); }
+    .cs-card:nth-child(4) .metric-num { color: var(--cyan); }
+    .cs-card:nth-child(5) .metric-num { color: var(--blue); }
+    .cs-card:nth-child(6) .metric-num { color: var(--purple); }
+
+    .cs-footer {
+      padding: 1rem 1.75rem;
+      border-top: 1px solid var(--border);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+
+    /* ── Featured Case Study ── */
+    .cs-featured {
+      background: linear-gradient(135deg, rgba(0,102,255,0.06), rgba(124,58,237,0.06));
+      border: 1px solid rgba(0,102,255,0.2);
+      border-radius: var(--radius-lg);
+      padding: 3rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+      margin-bottom: 3rem;
+    }
+
+    @media (max-width: 768px) { .cs-featured { grid-template-columns: 1fr; gap: 2rem; padding: 2rem; } }
+
+    .cs-featured-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(0,212,255,0.1);
+      border: 1px solid rgba(0,212,255,0.2);
+      border-radius: 50px;
+      padding: 0.3rem 0.9rem;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--cyan);
+      margin-bottom: 1.25rem;
+    }
+
+    .cs-featured h2 { font-size: 1.7rem; margin-bottom: 1rem; }
+    .cs-featured p { font-size: 0.95rem; margin-bottom: 1.5rem; }
+
+    .featured-metrics {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .featured-metric {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.25rem;
+    }
+
+    .featured-metric .num {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--cyan);
+      display: block;
+    }
+
+    .featured-metric .lbl { font-size: 0.8rem; color: var(--muted); }
+
+    /* ── Results Banner ── */
+    .results-banner {
+      background: var(--bg2);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 3rem 5%;
+    }
+
+    .results-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+      text-align: center;
+    }
+
+    @media (max-width: 640px) { .results-grid { grid-template-columns: 1fr 1fr; } }
+
+    .result-item .num {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 2.2rem;
+      font-weight: 700;
+      display: block;
+    }
+
+    .result-item:nth-child(1) .num { color: var(--cyan); }
+    .result-item:nth-child(2) .num { color: var(--blue); }
+    .result-item:nth-child(3) .num { color: var(--purple); }
+    .result-item:nth-child(4) .num { color: var(--cyan); }
+
+    .result-item .lbl { font-size: 0.8rem; color: var(--muted); }
+  </style>
+</head>
+<body>
+
+<div id="loader">
+  <div class="loader-logo">Flair<span>NS</span></div>
+  <div class="loader-bar"></div>
+  <div class="loader-text">Loading Case Studies...</div>
+</div>
+<div id="cursor"></div>
+<div id="cursor-ring"></div>
+<div id="scroll-progress"></div>
+
+<a href="contact.html" id="float-cta">
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M7.5 8.25h9m-9 3H12m-9.75 1.51c0 1.6 1.123 2.994 2.707 3.227 1.129.166 2.27.293 3.423.379.35.026.67.21.865.501L12 21l2.755-3.645c.195-.29.515-.475.865-.501a48.5 48.5 0 003.423-.379c1.584-.233 2.707-1.626 2.707-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0012 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018z"/></svg>
+  Get a Quote
+</a>
+
+<nav class="nav">
+  <a href="index.html" class="nav-logo">Flair<span>NS</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="solutions.html">Solutions</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="case-studies.html">Case Studies</a></li>
+    <li><a href="contact.html">Contact</a></li>
+    <li><a href="contact.html" class="nav-cta">Get a Quote</a></li>
+  </ul>
+  <button class="nav-hamburger" aria-label="Toggle menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="nav-mobile">
+  <a href="index.html">Home</a>
+  <a href="services.html">Services</a>
+  <a href="solutions.html">Solutions</a>
+  <a href="about.html">About</a>
+  <a href="case-studies.html">Case Studies</a>
+  <a href="contact.html">Contact</a>
+  <a href="contact.html" class="nav-cta" style="margin-top:.5rem;text-align:center;border-radius:8px;padding:.7rem 1rem;">Get a Quote →</a>
+</div>
+
+<!-- Hero -->
+<div class="page-hero">
+  <div class="page-hero-bg"></div>
+  <div class="page-hero-tag">
+    <svg width="12" height="12" fill="currentColor" viewBox="0 0 8 8"><circle cx="4" cy="4" r="4"/></svg>
+    6 Featured Projects
+  </div>
+  <h1>Real Projects.<br /><span class="gradient-text">Measurable Results.</span></h1>
+  <p>Every number below represents a client's problem we solved, a network we transformed, and infrastructure that's been running reliably ever since.</p>
+</div>
+
+<!-- Results Banner -->
+<div class="results-banner">
+  <div class="results-grid">
+    <div class="result-item reveal">
+      <span class="num"><span data-counter="99" data-suffix=".9%">99.9%</span></span>
+      <span class="lbl">Average uptime delivered</span>
+    </div>
+    <div class="result-item reveal" data-delay="100">
+      <span class="num"><span data-counter="45" data-suffix="%">45%</span></span>
+      <span class="lbl">Average WAN cost reduction</span>
+    </div>
+    <div class="result-item reveal" data-delay="200">
+      <span class="num"><span data-counter="8" data-suffix=" wks">8 wks</span></span>
+      <span class="lbl">Average deployment time</span>
+    </div>
+    <div class="result-item reveal" data-delay="300">
+      <span class="num"><span data-counter="500" data-suffix="+">500+</span></span>
+      <span class="lbl">Projects since 2004</span>
+    </div>
+  </div>
+</div>
+
+<!-- Case Studies Section -->
+<section class="section">
+  <div class="section-header">
+    <span class="section-label">Portfolio</span>
+    <h2>Featured <span class="gradient-text-bc">Case Studies</span></h2>
+  </div>
+
+  <!-- Filter -->
+  <div class="filter-bar">
+    <button class="filter-pill active" data-filter="all">All Projects</button>
+    <button class="filter-pill" data-filter="cabling">Cabling</button>
+    <button class="filter-pill" data-filter="sdwan">SD-WAN</button>
+    <button class="filter-pill" data-filter="security">Security</button>
+    <button class="filter-pill" data-filter="wifi">Wi-Fi</button>
+    <button class="filter-pill" data-filter="dc">Data Centre</button>
+    <button class="filter-pill" data-filter="servicenow">ServiceNow</button>
+  </div>
+
+  <div class="cs-grid">
+
+    <!-- Case Study 1 -->
+    <div class="glass-card cs-card reveal" data-filter="cabling" data-delay="0">
+      <div class="cs-header">
+        <div class="cs-meta">
+          <span class="cs-industry">IT / ITES</span>
+          <span class="cs-location">
+            <svg width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><circle cx="12" cy="11" r="3"/></svg>
+            Pune, Maharashtra
+          </span>
+        </div>
+        <h3>Structured Cabling for 8,000-Seat IT Campus, Hinjewadi</h3>
+      </div>
+      <div class="cs-body">
+        <div>
+          <span class="cs-section-label">Challenge</span>
+          <p class="cs-text">A leading software firm needed complete passive network infrastructure for a new campus — four 15-storey towers, 8,000 workstations, server rooms on each floor, and a central data centre — all delivered within a 16-week construction window.</p>
+        </div>
+        <div>
+          <span class="cs-section-label">Our Approach</span>
+          <p class="cs-text">Deployed 800km of Cat6A cabling across 48 IDFs, with OM4 fibre backbone connecting each IDF to the main MDF. Used structured containment (cable trays, J-hooks) for clean routing. All outlets tested and certified with Fluke DSX-8000 to TIA-568-C.2 standard.</p>
+        </div>
+      </div>
+      <div class="cs-metrics">
+        <div class="metric">
+          <span class="metric-num"><span data-counter="800" data-suffix="km">800km</span></span>
+          <span class="metric-label">Cable installed</span>
+        </div>
+        <div class="metric">
+          <span class="metric-num"><span data-counter="16" data-suffix="wk">16wk</span></span>
+          <span class="metric-label">Delivery</span>
+        </div>
+        <div class="metric">
+          <span class="metric-num">100%</span>
+          <span class="metric-label">Pass rate</span>
+        </div>
+      </div>
+      <div class="cs-footer">
+        <span class="tag">Cat6A</span>
+        <span class="tag">OM4 Fibre</span>
+        <span class="tag">Fluke Certified</span>
+      </div>
+    </div>
+
+    <!-- Case Study 2 -->
+    <div class="glass-card cs-card reveal" data-filter="sdwan" data-delay="100">
+      <div class="cs-header">
+        <div class="cs-meta">
+          <span class="cs-industry">Banking &amp; Finance</span>
+          <span class="cs-location">
+            <svg width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><circle cx="12" cy="11" r="3"/></svg>
+            Pan-India (50 branches)
+          </span>
+        </div>
+        <h3>SD-WAN Rollout Across 50 Bank Branches — Replacing Legacy MPLS</h3>
+      </div>
+      <div class="cs-body">
+        <div>
+          <span class="cs-section-label">Challenge</span>
+          <p class="cs-text">A private sector bank was spending ₹2.4 crore/year on MPLS for 50 branches. Core banking latency averaged 180ms during peak hours. The IT team had no real-time visibility into branch WAN performance and was reactive to outages.</p>
+        </div>
+        <div>
+          <span class="cs-section-label">Our Approach</span>
+          <p class="cs-text">Deployed Fortinet SD-WAN with dual ISP (broadband + 4G backup) per branch. Application-aware policies prioritised core banking traffic. Zero-touch provisioning enabled rapid deployment — 2 branches/week without field engineers. Centralised NOC for 24×7 monitoring.</p>
+        </div>
+      </div>
+      <div class="cs-metrics">
+        <div class="metric">
+          <span class="metric-num"><span data-counter="45" data-suffix="%">45%</span></span>
+          <span class="metric-label">WAN cost reduction</span>
+        </div>
+        <div class="metric">
+          <span class="metric-num"><span data-counter="62" data-suffix="ms">62ms</span></span>
+          <span class="metric-label">Avg latency (was 180ms)</span>
+        </div>
+        <div class="metric">
+          <span class="metric-num">99.9%</span>
+          <span class="metric-label">Uptime achieved</span>
+        </div>
+      </div>
+      <div class="cs-footer">
+        <span class="tag">Fortinet SD-WAN</span>
+        <span class="tag">ZTP</span>
+        <span class="tag">NOC</span>
+      </div>
+    </div>
+
+    <!-- Case Study 3 -->
+    <div class="glass-card cs-card reveal" data-filter="security" data-delay="200">
+      <div class="cs-header">
+        <div class="cs-meta">
+          <span class="cs-industry">Healthcare</span>
+          <span class="cs-location">
+            <svg width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><circle cx="12" cy="11" r="3"/></svg>
+            Mumbai, Maharashtra
+          </span>
+        </div>
+        <h3>800-Camera IP Surveillance for Tertiary Care Hospital, Mumbai</h3>
+      </div>
+      <div class="cs-body">
+        <div>
+          <span class="cs-section-label">Challenge</span>
+          <p class="cs-text">A 600-bed super-speciality hospital needed comprehensive CCTV coverage across all clinical, administrative, and public areas — including high-security zones (pharmacy, OT, ICU) with access control integration. Previous analog system had blind spots and no analytics.</p>
+        </div>
+        <div>
+          <span class="cs-section-label">Our Approach</span>
+          <p class="cs-text">Deployed 800 Hikvision 4K IP cameras with AI video analytics (crowd detection, intrusion alerts, smoke detection). Biometric access control at 120 critical doors. Integrated with hospital HR system for automatic access provisioning. NVR storage with 60-day retention.</p>
+        </div>
+      </div>
+      <div class="cs-metrics">
+        <div class="metric">
+          <span class="metric-num"><span data-counter="800" data-suffix="">800</span></span>
+          <span class="metric-label">4K cameras</span>
+        </div>
+        <div class="metric">
+          <span class="metric-num"><span data-counter="120" data-suffix="">120</span></span>
+          <span class="metric-label">Access control doors</span>
+        </div>
+        <div class="metric">
+          <span class="metric-num">60d</span>
+          <span class="metric-label">Video retention</span>
+        </div>
+      </div>
+      <div class="cs-footer">
+        <span class="tag">Hikvision 4K</span>
+        <span class="tag">AI Analytics</span>
+        <span class="tag">Biometric</span>
+      </div>
+    </div>
+
+    <!-- Case Study 4 -->
+    <div class="glass-card cs-card reveal" data-filter="wifi" data-delay="0">
+      <div class="cs-header">
+        <div class="cs-meta">
+          <span class="cs-industry">Education</span>
+          <span class="cs-location">
+            <svg width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><circle cx="12" cy="11" r="3"/></svg>
+            Delhi NCR
+          </span>
+        </div>
+        <h3>Wi-Fi 6 Campus Rollout — 25,000 Concurrent Users, Delhi NCR University</h3>
+      </div>
+      <div class="cs-body">
+        <div>
+          <span class="cs-section-label">Challenge</span>
+          <p class="cs-text">A 300-acre university campus had a decade-old Wi-Fi infrastructure (802.11n) that couldn't support the density of student devices. Classrooms dropped connectivity during exams. Outdoor areas had no coverage. The administration wanted seamless roaming for 25,000 users.</p>
+        </div>
+        <div>
+          <span class="cs-section-label">Our Approach</span>
+          <p class="cs-text">Predictive Ekahau RF design for every building and outdoor area. Deployed 1,200 Aruba Wi-Fi 6 APs on new Cat6A infrastructure. Per-user bandwidth policies via ClearPass. Seamless roaming across the entire campus. Dedicated IoT VLAN for 5,000+ smart devices.</p>
+        </div>
+      </div>
+      <div class="cs-metrics">
+        <div class="metric">
+          <span class="metric-num"><span data-counter="1200" data-suffix="">1,200</span></span>
+          <span class="metric-label">APs deployed</span>
+        </div>
+        <div class="metric">
+          <span class="metric-num"><span data-counter="25000" data-suffix="">25,000</span></span>
+          <span class="metric-label">Concurrent users</span>
+        </div>
+        <div class="metric">
+          <span class="metric-num">100%</span>
+          <span class="metric-label">Campus coverage</span>
+        </div>
+      </div>
+      <div class="cs-footer">
+        <span class="tag">Aruba Wi-Fi 6</span>
+        <span class="tag">ClearPass</span>
+        <span class="tag">Ekahau Design</span>
+      </div>
+    </div>
+
+    <!-- Case Study 5 -->
+    <div class="glass-card cs-card reveal" data-filter="dc" data-delay="100">
+      <div class="cs-header">
+        <div class="cs-meta">
+          <span class="cs-industry">IT / ITES</span>
+          <span class="cs-location">
+            <svg width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><circle cx="12" cy="11" r="3"/></svg>
+            Chennai, Tamil Nadu
+          </span>
+        </div>
+        <h3>Tier III Data Centre Build — 500 Racks, Financial Services, Chennai</h3>
+      </div>
+      <div class="cs-body">
+        <div>
+          <span class="cs-section-label">Challenge</span>
+          <p class="cs-text">A financial services firm needed to exit three aging co-location facilities and consolidate into a single owned Tier III data centre. Requirements included 2N power redundancy, sub-20ms latency to AWS Mumbai, and the ability to scale from 200 to 500 racks within 2 years.</p>
+        </div>
+        <div>
+          <span class="cs-section-label">Our Approach</span>
+          <p class="cs-text">Full DC design and build — including hot/cold aisle containment, 2N UPS and generator infrastructure, in-row precision cooling, MPO fibre spine-leaf cabling, and complete DCIM (Schneider EcoStruxure). Phased migration from co-lo with zero business disruption.</p>
+        </div>
+      </div>
+      <div class="cs-metrics">
+        <div class="metric">
+          <span class="metric-num"><span data-counter="500" data-suffix="">500</span></span>
+          <span class="metric-label">Rack capacity</span>
+        </div>
+        <div class="metric">
+          <span class="metric-num"><span data-counter="40" data-suffix="%">40%</span></span>
+          <span class="metric-label">Cost vs. co-lo</span>
+        </div>
+        <div class="metric">
+          <span class="metric-num">1.4</span>
+          <span class="metric-label">PUE achieved</span>
+        </div>
+      </div>
+      <div class="cs-footer">
+        <span class="tag">Tier III</span>
+        <span class="tag">2N Redundancy</span>
+        <span class="tag">DCIM</span>
+        <span class="tag">Spine-Leaf</span>
+      </div>
+    </div>
+
+    <!-- Case Study 6 -->
+    <div class="glass-card cs-card reveal" data-filter="servicenow" data-delay="200">
+      <div class="cs-header">
+        <div class="cs-meta">
+          <span class="cs-industry">IT / ITES</span>
+          <span class="cs-location">
+            <svg width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><circle cx="12" cy="11" r="3"/></svg>
+            Bangalore, Karnataka
+          </span>
+        </div>
+        <h3>ServiceNow ITSM + ITOM Implementation — 15,000-Seat Tech Firm, Bangalore</h3>
+      </div>
+      <div class="cs-body">
+        <div>
+          <span class="cs-section-label">Challenge</span>
+          <p class="cs-text">A 15,000-seat IT services company was managing incidents via email and spreadsheets. MTTR averaged 6 hours. Their CMDB was nonexistent — no asset visibility, no service mapping. An upcoming client audit required ITSM maturity evidence within 90 days.</p>
+        </div>
+        <div>
+          <span class="cs-section-label">Our Approach</span>
+          <p class="cs-text">Implemented ServiceNow ITSM (Incident, Problem, Change, CMDB) + ITOM Discovery. Used MID Server for on-premise discovery. Populated full CMDB with 45,000 CIs in 8 weeks. Automated 60% of routine incidents via Flow Designer. Delivered user training to 500+ IT staff.</p>
+        </div>
+      </div>
+      <div class="cs-metrics">
+        <div class="metric">
+          <span class="metric-num"><span data-counter="60" data-suffix="%">60%</span></span>
+          <span class="metric-label">MTTR reduction</span>
+        </div>
+        <div class="metric">
+          <span class="metric-num"><span data-counter="45000" data-suffix="">45,000</span></span>
+          <span class="metric-label">CIs in CMDB</span>
+        </div>
+        <div class="metric">
+          <span class="metric-num">8wk</span>
+          <span class="metric-label">Go-live</span>
+        </div>
+      </div>
+      <div class="cs-footer">
+        <span class="tag">ServiceNow ITSM</span>
+        <span class="tag">ITOM</span>
+        <span class="tag">CMDB</span>
+        <span class="tag">Flow Designer</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="section" style="background:var(--bg2);border-top:1px solid var(--border);text-align:center;">
+  <span class="section-label" style="display:block;margin-bottom:.75rem;">Your Project Could Be Next</span>
+  <h2 style="margin-bottom:1rem;">Ready to Build Something<br /><span class="gradient-text">Exceptional?</span></h2>
+  <p style="max-width:500px;margin:0 auto 2.5rem;">Every project starts with a conversation. Tell us about your infrastructure challenge and we'll tell you how we can solve it.</p>
+  <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
+    <a href="contact.html" class="btn btn-primary">Start Your Project →</a>
+    <a href="services.html" class="btn btn-outline">Explore Services</a>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <a href="index.html" class="nav-logo">Flair<span>NS</span></a>
+      <p>India's leading IT infrastructure partner since 2004.</p>
+    </div>
+    <div class="footer-col">
+      <h5>Services</h5>
+      <ul>
+        <li><a href="services.html#cabling">Structured Cabling</a></li>
+        <li><a href="services.html#sdwan">SD-WAN</a></li>
+        <li><a href="services.html#dc">Data Centres</a></li>
+        <li><a href="services.html#wifi">Wi-Fi Solutions</a></li>
+        <li><a href="services.html#security">Security</a></li>
+        <li><a href="services.html#servicenow">ServiceNow</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Company</h5>
+      <ul>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="solutions.html">Industries</a></li>
+        <li><a href="case-studies.html">Case Studies</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Contact</h5>
+      <div class="footer-contact-item">
+        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><circle cx="12" cy="11" r="3"/></svg>
+        <span>Pune, Maharashtra, India</span>
+      </div>
+      <div class="footer-contact-item">
+        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+        <span>info@flairnetworksystems.com</span>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2004–2025 Flair Network Systems. All rights reserved.</p>
+    <div class="footer-badges"><span class="footer-badge">ISO 9001</span><span class="footer-badge">Pan-India</span></div>
+  </div>
+</footer>
+
+<script>
+  // Filter functionality
+  document.querySelectorAll('.filter-pill').forEach(pill => {
+    pill.addEventListener('click', () => {
+      document.querySelectorAll('.filter-pill').forEach(p => p.classList.remove('active'));
+      pill.classList.add('active');
+      const filter = pill.dataset.filter;
+      document.querySelectorAll('.cs-card').forEach(card => {
+        if (filter === 'all' || card.dataset.filter === filter) {
+          card.style.display = 'flex';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    });
+  });
+</script>
+<script src="shared.js"></script>
+</body>
+</html>
