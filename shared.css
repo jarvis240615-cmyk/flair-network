@@ -1402,3 +1402,26 @@ body::before {
   background-clip: text;
 }
 
+
+/* WhatsApp Float */
+.whatsapp-float {
+  position: fixed;
+  bottom: 5.5rem;
+  right: 2rem;
+  z-index: 7999;
+  width: 52px;
+  height: 52px;
+  background: #25D366;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 20px rgba(37,211,102,0.4);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  animation: floatPulse 3s ease-in-out infinite;
+}
+.whatsapp-float:hover {
+  transform: scale(1.1) translateY(-2px);
+  box-shadow: 0 8px 28px rgba(37,211,102,0.55);
+  animation: none;
+}
