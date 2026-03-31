@@ -26,7 +26,7 @@
     .hero-gradient {
       position: absolute;
       inset: 0;
-      background: radial-gradient(ellipse 70% 60% at 50% 60%, rgba(0,102,255,0.06) 0%, transparent 70%),
+      background: radial-gradient(ellipse 70% 60% at 50% 60%, rgba(139,92,246,0.06) 0%, transparent 70%),
                   linear-gradient(180deg, rgba(3,7,18,0) 60%, var(--bg) 100%);
       pointer-events: none;
       z-index: 1;
@@ -44,21 +44,21 @@
       align-items: center;
       gap: 0.5rem;
       padding: 0.4rem 1rem 0.4rem 0.6rem;
-      background: rgba(0,212,255,0.07);
-      border: 1px solid rgba(0,212,255,0.2);
+      background: rgba(139,92,246,0.07);
+      border: 1px solid rgba(139,92,246,0.2);
       border-radius: 50px;
       font-size: 0.78rem;
       font-weight: 600;
       letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: var(--cyan);
+      color: var(--purple-light);
       margin-bottom: 2rem;
       animation: fadeInDown 0.7s ease both;
     }
 
     .hero-badge .dot {
       width: 6px; height: 6px;
-      background: var(--cyan);
+      background: var(--purple-light);
       border-radius: 50%;
       animation: blink 1.2s ease-in-out infinite;
     }
@@ -87,14 +87,14 @@
     .hero-typewriter-wrap .label { color: var(--muted); margin-right: 0.4rem; }
 
     #typewriter {
-      color: var(--cyan);
+      color: var(--purple-light);
       font-weight: 600;
-      border-right: 2px solid var(--cyan);
+      border-right: 2px solid var(--purple-light);
       padding-right: 2px;
       animation: cursor-blink 0.8s step-end infinite;
     }
 
-    @keyframes cursor-blink { 0%,100%{border-color:var(--cyan);} 50%{border-color:transparent;} }
+    @keyframes cursor-blink { 0%,100%{border-color:var(--purple-light);} 50%{border-color:transparent;} }
 
     .hero-ctas {
       display: flex;
@@ -135,7 +135,7 @@
     .scroll-arrow::after {
       content: '';
       width: 3px; height: 7px;
-      background: var(--cyan);
+      background: var(--purple-light);
       border-radius: 3px;
       animation: scroll-bounce 1.6s ease-in-out infinite;
     }
@@ -178,10 +178,10 @@
       font-weight: 500;
     }
 
-    .stat-item:nth-child(1) .stat-number { color: var(--cyan); }
+    .stat-item:nth-child(1) .stat-number { color: var(--purple-light); }
     .stat-item:nth-child(2) .stat-number { color: var(--blue); }
     .stat-item:nth-child(3) .stat-number { color: var(--purple); }
-    .stat-item:nth-child(4) .stat-number { color: var(--cyan); }
+    .stat-item:nth-child(4) .stat-number { color: var(--purple-light); }
 
     @media(max-width:640px){.stats-grid{grid-template-columns:1fr 1fr;}}
 
@@ -202,7 +202,7 @@
     }
 
     .service-card p { font-size: 0.85rem; line-height: 1.6; }
-    .service-card:hover h4 { color: var(--cyan); }
+    .service-card:hover h4 { color: var(--purple-light); }
 
     .service-link {
       display: inline-flex;
@@ -214,7 +214,7 @@
       margin-top: 1rem;
       transition: gap 0.2s, color 0.2s;
     }
-    .service-card:hover .service-link { gap: 0.6rem; color: var(--cyan); }
+    .service-card:hover .service-link { gap: 0.6rem; color: var(--purple-light); }
 
     /* ── Why Choose Us ── */
     .why-section { background: var(--bg2); }
@@ -240,7 +240,7 @@
       position:absolute;
       top:0;left:0;right:0;
       height:2px;
-      background:linear-gradient(90deg,var(--blue),var(--cyan));
+      background:linear-gradient(90deg,var(--blue),var(--purple-light));
     }
 
     .pillar-num {
@@ -255,11 +255,11 @@
 
     .pillar-icon {
       width:48px;height:48px;
-      background:linear-gradient(135deg,rgba(0,102,255,0.15),rgba(0,212,255,0.1));
-      border:1px solid rgba(0,212,255,0.2);
+      background:linear-gradient(135deg,rgba(0,85,255,0.12),rgba(139,92,246,0.1));
+      border:1px solid rgba(139,92,246,0.2);
       border-radius:12px;
       display:flex;align-items:center;justify-content:center;
-      color:var(--cyan);
+      color:var(--purple-light);
       margin-bottom:1.5rem;
     }
 
@@ -267,7 +267,7 @@
 
     /* ── Founder Quote ── */
     .quote-section {
-      background: linear-gradient(135deg, rgba(0,102,255,0.05), rgba(124,58,237,0.05));
+      background: linear-gradient(135deg, rgba(139,92,246,0.05), rgba(124,58,237,0.05));
       border-top: 1px solid var(--border);
       border-bottom: 1px solid var(--border);
     }
@@ -309,7 +309,7 @@
     .quote-avatar {
       width: 52px; height: 52px;
       border-radius: 50%;
-      background: linear-gradient(135deg, var(--blue), var(--cyan));
+      background: linear-gradient(135deg, var(--blue), var(--purple-light));
       display: flex;
       align-items: center;
       justify-content: center;
@@ -351,9 +351,9 @@
     }
 
     .industry-pill:hover {
-      border-color: var(--cyan);
-      color: var(--cyan);
-      background: rgba(0,212,255,0.05);
+      border-color: var(--purple-light);
+      color: var(--purple-light);
+      background: rgba(139,92,246,0.05);
     }
 
     /* ── CTA Block ── */
@@ -370,7 +370,7 @@
       content:'';
       position:absolute;
       inset:0;
-      background:radial-gradient(ellipse 60% 80% at 50% 100%,rgba(0,102,255,0.08) 0%,transparent 70%);
+      background:radial-gradient(ellipse 60% 80% at 50% 100%,rgba(139,92,246,0.08) 0%,transparent 70%);
       pointer-events:none;
     }
 
@@ -728,7 +728,7 @@
     // Mobile: simple CSS gradient instead
     canvas.style.display = 'none';
     document.getElementById('hero').style.background =
-      'radial-gradient(ellipse 80% 60% at 30% 40%, rgba(0,102,255,0.15) 0%, transparent 70%), var(--bg2)';
+      'radial-gradient(ellipse 80% 60% at 30% 40%, rgba(0,85,255,0.12) 0%, transparent 70%), var(--bg2)';
     return;
   }
 
