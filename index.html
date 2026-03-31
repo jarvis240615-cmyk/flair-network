@@ -20,7 +20,8 @@
     #hero-canvas {
       position: absolute;
       inset: 0;
-      z-index: 0;
+      z-index: 2;
+      pointer-events: none;
     }
 
     .hero-gradient {
@@ -29,12 +30,12 @@
       background: radial-gradient(ellipse 70% 60% at 50% 60%, rgba(139,92,246,0.06) 0%, transparent 70%),
                   linear-gradient(180deg, rgba(3,7,18,0) 60%, var(--bg) 100%);
       pointer-events: none;
-      z-index: 1;
+      z-index: 3;
     }
 
     .hero-content {
       position: relative;
-      z-index: 2;
+      z-index: 4;
       padding: 0 5%;
       max-width: 800px;
     }
@@ -164,10 +165,11 @@
 
     .stat-number {
       font-family: 'Space Grotesk', sans-serif;
-      font-size: clamp(2rem, 4vw, 3rem);
+      font-size: clamp(2.5rem, 5vw, 4.5rem);
       font-weight: 700;
       line-height: 1;
       margin-bottom: 0.4rem;
+      letter-spacing: -0.02em;
     }
 
     .stat-label {
@@ -429,26 +431,75 @@
 
 <!-- Hero -->
 <section id="hero">
+  <!-- Real photography background -->
+  <div class="hero-photo-bg" style="background-image: url('https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1920&q=80');"></div>
+  <div class="hero-photo-overlay"></div>
   <canvas id="hero-canvas"></canvas>
   <div class="hero-gradient"></div>
-  <div class="hero-content">
-    <div class="hero-badge"><span class="dot"></span>Est. 2004 · Pan-India IT Infrastructure</div>
-    <h1 class="hero-headline">Connecting India's<br /><span class="gradient-text">Enterprises</span> to<br />the Future.</h1>
-    <p class="hero-sub">20+ years of enterprise-grade infrastructure expertise.</p>
-    <div class="hero-typewriter-wrap">
-      <span class="label">Specialising in</span>
-      <span id="typewriter" data-words='["Structured Cabling","SD-WAN Networks","Data Centres","Smart Surveillance","ServiceNow","Wi-Fi Solutions"]'></span>
+
+  <div class="hero-inner">
+    <!-- Left: main content -->
+    <div class="hero-content" style="padding:0; max-width:none;">
+      <div class="hero-badge"><span class="dot"></span>Est. 2004 · Pan-India IT Infrastructure</div>
+      <h1 class="hero-headline">Connecting India's<br /><span class="gradient-text">Enterprises</span><br />to the Future.</h1>
+      <p class="hero-sub">20+ years of enterprise-grade infrastructure expertise.</p>
+      <div class="hero-typewriter-wrap">
+        <span class="label">Specialising in</span>
+        <span id="typewriter" data-words='["Structured Cabling","SD-WAN Networks","Data Centres","Smart Surveillance","ServiceNow","Wi-Fi Solutions"]'></span>
+      </div>
+      <div class="hero-ctas">
+        <a href="services.html" class="btn btn-primary">Explore Services →</a>
+        <a href="contact.html" class="btn btn-outline">Get a Quote</a>
+      </div>
     </div>
-    <div class="hero-ctas">
-      <a href="services.html" class="btn btn-primary">Explore Services →</a>
-      <a href="contact.html" class="btn btn-outline">Get a Quote</a>
+
+    <!-- Right: floating stat card -->
+    <div class="hero-stat-card reveal-right">
+      <div class="card-label">At a Glance</div>
+      <div class="stat-big">20+</div>
+      <div class="stat-desc">Years building enterprise IT infrastructure across India</div>
+      <div class="mini-stats">
+        <div class="mini-stat">
+          <span class="num">500+</span>
+          <span class="lbl">Projects</span>
+        </div>
+        <div class="mini-stat">
+          <span class="num">18+</span>
+          <span class="lbl">States</span>
+        </div>
+        <div class="mini-stat">
+          <span class="num">8</span>
+          <span class="lbl">Services</span>
+        </div>
+        <div class="mini-stat">
+          <span class="num">99.9%</span>
+          <span class="lbl">SLA</span>
+        </div>
+      </div>
     </div>
   </div>
+
   <div class="hero-scroll-hint">
     <div class="scroll-arrow"></div>
-    <span>Scroll</span>
+    <span>Scroll to Explore</span>
   </div>
 </section>
+
+<!-- Photo collage strip -->
+<div class="photo-strip">
+  <div class="photo-strip-item">
+    <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80" alt="Structured cabling installation" width="800" height="260" loading="lazy" />
+    <div class="photo-caption">Structured Cabling</div>
+  </div>
+  <div class="photo-strip-item">
+    <img src="https://images.unsplash.com/photo-1531492746076-161ca9bcad58?w=800&q=80" alt="Data centre infrastructure" width="800" height="200" loading="lazy" />
+    <div class="photo-caption">Data Centres</div>
+  </div>
+  <div class="photo-strip-item">
+    <img src="https://images.unsplash.com/photo-1606904825846-647eb07f5be2?w=800&q=80" alt="Enterprise Wi-Fi deployment" width="800" height="230" loading="lazy" />
+    <div class="photo-caption">Wi-Fi Solutions</div>
+  </div>
+</div>
 
 <!-- Stats Bar -->
 <div class="stats-bar">
@@ -472,6 +523,29 @@
   </div>
 </div>
 
+<!-- Marquee Strip -->
+<div class="marquee-strip">
+  <div class="marquee-track">
+    <span>STRUCTURED CABLING</span><span class="sep">·</span>
+    <span>DATA CENTRES</span><span class="sep">·</span>
+    <span>SD-WAN</span><span class="sep">·</span>
+    <span>SURVEILLANCE</span><span class="sep">·</span>
+    <span>WI-FI</span><span class="sep">·</span>
+    <span>SERVICENOW</span><span class="sep">·</span>
+    <span>AV SYSTEMS</span><span class="sep">·</span>
+    <span>IT AUDITS</span><span class="sep">·</span>
+    <!-- Duplicate for seamless loop -->
+    <span>STRUCTURED CABLING</span><span class="sep">·</span>
+    <span>DATA CENTRES</span><span class="sep">·</span>
+    <span>SD-WAN</span><span class="sep">·</span>
+    <span>SURVEILLANCE</span><span class="sep">·</span>
+    <span>WI-FI</span><span class="sep">·</span>
+    <span>SERVICENOW</span><span class="sep">·</span>
+    <span>AV SYSTEMS</span><span class="sep">·</span>
+    <span>IT AUDITS</span><span class="sep">·</span>
+  </div>
+</div>
+
 <!-- Services -->
 <section class="section">
   <div class="section-header">
@@ -479,122 +553,204 @@
     <h2>Comprehensive IT<br /><span class="gradient-text-bc">Infrastructure Services</span></h2>
     <p>End-to-end infrastructure solutions designed for reliability, scalability, and long-term business value.</p>
   </div>
-  <div class="services-grid">
+  <div class="img-services-scroll services-grid" style="display:grid;grid-template-columns:repeat(4,1fr);gap:1.25rem;">
 
-    <!-- Card 1 -->
-    <div class="glass-card service-card reveal" data-delay="0">
-      <div class="service-icon">
-        <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M9 3H5a2 2 0 00-2 2v4m6-6h10a2 2 0 012 2v4M9 3v18m0 0h10a2 2 0 002-2V9M9 21H5a2 2 0 01-2-2V9m0 0h18"/></svg>
+    <!-- Image Card 1: Cabling -->
+    <a href="services.html#cabling" class="img-service-card reveal" data-delay="0">
+      <div class="card-bg" style="background-image:url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80');"></div>
+      <div class="card-overlay"></div>
+      <div class="card-body">
+        <div class="card-icon">
+          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M9 3H5a2 2 0 00-2 2v4m6-6h10a2 2 0 012 2v4M9 3v18m0 0h10a2 2 0 002-2V9M9 21H5a2 2 0 01-2-2V9m0 0h18"/></svg>
+        </div>
+        <h4>Structured Cabling</h4>
+        <p>Enterprise-grade copper & fibre cabling for seamless, future-proof connectivity.</p>
+        <span class="card-link">Explore <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
       </div>
-      <h4>Structured Cabling</h4>
-      <p>Enterprise-grade copper & fibre cabling infrastructure for seamless connectivity.</p>
-      <a href="services.html#cabling" class="service-link">Learn more <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-    </div>
+    </a>
 
-    <!-- Card 2 -->
-    <div class="glass-card service-card reveal" data-delay="80">
-      <div class="service-icon">
-        <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064"/><circle cx="12" cy="12" r="9"/></svg>
+    <!-- Image Card 2: SD-WAN -->
+    <a href="services.html#sdwan" class="img-service-card reveal" data-delay="80">
+      <div class="card-bg" style="background-image:url('https://images.unsplash.com/photo-1480944657103-7fed22359e1d?w=800&q=80');"></div>
+      <div class="card-overlay"></div>
+      <div class="card-body">
+        <div class="card-icon">
+          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064"/><circle cx="12" cy="12" r="9"/></svg>
+        </div>
+        <h4>SD-WAN</h4>
+        <p>Software-defined WAN for multi-site enterprises — 40–60% cost savings vs. MPLS.</p>
+        <span class="card-link">Explore <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
       </div>
-      <h4>SD-WAN</h4>
-      <p>Software-defined networking for multi-site enterprises with centralised control.</p>
-      <a href="services.html#sdwan" class="service-link">Learn more <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-    </div>
+    </a>
 
-    <!-- Card 3 -->
-    <div class="glass-card service-card reveal" data-delay="160">
-      <div class="service-icon">
-        <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+    <!-- Image Card 3: Data Centre -->
+    <a href="services.html#dc" class="img-service-card reveal" data-delay="160">
+      <div class="card-bg" style="background-image:url('https://images.unsplash.com/photo-1531492746076-161ca9bcad58?w=800&q=80');"></div>
+      <div class="card-overlay"></div>
+      <div class="card-body">
+        <div class="card-icon">
+          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+        </div>
+        <h4>Data Centre Infrastructure</h4>
+        <p>Turnkey Tier II/III/IV DC design, build, and managed operations.</p>
+        <span class="card-link">Explore <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
       </div>
-      <h4>Data Centre Infrastructure</h4>
-      <p>Turnkey DC design, build, and management with 99.99% uptime SLA.</p>
-      <a href="services.html#dc" class="service-link">Learn more <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-    </div>
+    </a>
 
-    <!-- Card 4 -->
-    <div class="glass-card service-card reveal" data-delay="240">
-      <div class="service-icon">
-        <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M8.111 16.404a5.5 5.5 0 017.778 0M12 20h.01m-7.08-7.071c3.904-3.905 10.236-3.905 14.141 0M1.394 9.393c5.857-5.857 15.355-5.857 21.213 0"/></svg>
+    <!-- Image Card 4: Wi-Fi -->
+    <a href="services.html#wifi" class="img-service-card reveal" data-delay="240">
+      <div class="card-bg" style="background-image:url('https://images.unsplash.com/photo-1606904825846-647eb07f5be2?w=800&q=80');"></div>
+      <div class="card-overlay"></div>
+      <div class="card-body">
+        <div class="card-icon">
+          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M8.111 16.404a5.5 5.5 0 017.778 0M12 20h.01m-7.08-7.071c3.904-3.905 10.236-3.905 14.141 0M1.394 9.393c5.857-5.857 15.355-5.857 21.213 0"/></svg>
+        </div>
+        <h4>Wi-Fi Solutions</h4>
+        <p>Wi-Fi 6 high-density deployments for campuses, hospitals, and enterprise offices.</p>
+        <span class="card-link">Explore <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
       </div>
-      <h4>Wi-Fi Solutions</h4>
-      <p>High-density enterprise Wi-Fi 6 deployments for offices, campuses, and hospitality.</p>
-      <a href="services.html#wifi" class="service-link">Learn more <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-    </div>
+    </a>
 
-    <!-- Card 5 -->
-    <div class="glass-card service-card reveal" data-delay="0">
-      <div class="service-icon">
-        <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M15 10l4.553-2.069A1 1 0 0121 8.82V15.18a1 1 0 01-1.447.894L15 14M3 8a2 2 0 012-2h10a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2V8z"/></svg>
+    <!-- Image Card 5: Security -->
+    <a href="services.html#security" class="img-service-card reveal" data-delay="0">
+      <div class="card-bg" style="background-image:url('https://images.unsplash.com/photo-1557804506-669a67965ba0?w=800&q=80');"></div>
+      <div class="card-overlay"></div>
+      <div class="card-body">
+        <div class="card-icon">
+          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M15 10l4.553-2.069A1 1 0 0121 8.82V15.18a1 1 0 01-1.447.894L15 14M3 8a2 2 0 012-2h10a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2V8z"/></svg>
+        </div>
+        <h4>Security & Surveillance</h4>
+        <p>End-to-end CCTV, access control, and AI-powered security for critical facilities.</p>
+        <span class="card-link">Explore <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
       </div>
-      <h4>Security & Surveillance</h4>
-      <p>End-to-end CCTV, access control, and integrated security systems for critical facilities.</p>
-      <a href="services.html#security" class="service-link">Learn more <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-    </div>
+    </a>
 
-    <!-- Card 6 -->
-    <div class="glass-card service-card reveal" data-delay="80">
-      <div class="service-icon">
-        <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><circle cx="12" cy="12" r="3"/></svg>
+    <!-- Image Card 6: ServiceNow -->
+    <a href="services.html#servicenow" class="img-service-card reveal" data-delay="80">
+      <div class="card-bg" style="background-image:url('https://images.unsplash.com/photo-1573164713988-8665fc963095?w=800&q=80');"></div>
+      <div class="card-overlay"></div>
+      <div class="card-body">
+        <div class="card-icon">
+          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><circle cx="12" cy="12" r="3"/></svg>
+        </div>
+        <h4>ServiceNow Consultancy</h4>
+        <p>ITSM implementation, CMDB, and Flow Designer automation on the ServiceNow platform.</p>
+        <span class="card-link">Explore <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
       </div>
-      <h4>ServiceNow Consultancy</h4>
-      <p>ITSM implementation, customisation, and managed services on the ServiceNow platform.</p>
-      <a href="services.html#servicenow" class="service-link">Learn more <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-    </div>
+    </a>
 
-    <!-- Card 7 -->
-    <div class="glass-card service-card reveal" data-delay="160">
-      <div class="service-icon">
-        <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+    <!-- Image Card 7: AV -->
+    <a href="services.html#av" class="img-service-card reveal" data-delay="160">
+      <div class="card-bg" style="background-image:url('https://images.unsplash.com/photo-1517502884422-41eaead166d4?w=800&q=80');"></div>
+      <div class="card-overlay"></div>
+      <div class="card-body">
+        <div class="card-icon">
+          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+        </div>
+        <h4>Audio-Visual Systems</h4>
+        <p>Conference rooms, digital signage, and integrated AV for modern workplaces.</p>
+        <span class="card-link">Explore <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
       </div>
-      <h4>Audio-Visual Systems</h4>
-      <p>Conference rooms, digital signage, and integrated AV for modern workplaces.</p>
-      <a href="services.html#av" class="service-link">Learn more <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-    </div>
+    </a>
 
-    <!-- Card 8 -->
-    <div class="glass-card service-card reveal" data-delay="240">
-      <div class="service-icon">
-        <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/></svg>
+    <!-- Image Card 8: Audits -->
+    <a href="services.html#audits" class="img-service-card reveal" data-delay="240">
+      <div class="card-bg" style="background-image:url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&q=80');"></div>
+      <div class="card-overlay"></div>
+      <div class="card-body">
+        <div class="card-icon">
+          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/></svg>
+        </div>
+        <h4>IT Infrastructure Audits</h4>
+        <p>Comprehensive assessments with actionable roadmaps and risk scoring.</p>
+        <span class="card-link">Explore <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
       </div>
-      <h4>IT Infrastructure Audits</h4>
-      <p>Comprehensive assessments of your existing infrastructure with actionable roadmaps.</p>
-      <a href="services.html#audits" class="service-link">Learn more <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-    </div>
+    </a>
 
   </div>
 </section>
 
-<!-- Why Choose Us -->
-<section class="section why-section">
-  <div class="section-header">
-    <span class="section-label">Our Difference</span>
-    <h2>Why <span class="gradient-text-bc">Flair Network</span></h2>
-    <p>Trusted by enterprises across India for two decades — here's why.</p>
+<!-- Client Trust Strip -->
+<div class="clients-strip">
+  <div class="strip-label">Trusted Across Industries</div>
+  <div class="clients-logos">
+    <div class="client-logo-item">
+      <div class="client-logo-icon">🏦</div>
+      <span>Banking</span>
+    </div>
+    <div class="client-logo-item">
+      <div class="client-logo-icon">🏥</div>
+      <span>Healthcare</span>
+    </div>
+    <div class="client-logo-item">
+      <div class="client-logo-icon">🎓</div>
+      <span>Education</span>
+    </div>
+    <div class="client-logo-item">
+      <div class="client-logo-icon">💻</div>
+      <span>IT / ITES</span>
+    </div>
+    <div class="client-logo-item">
+      <div class="client-logo-icon">🏭</div>
+      <span>Manufacturing</span>
+    </div>
+    <div class="client-logo-item">
+      <div class="client-logo-icon">🏪</div>
+      <span>Retail</span>
+    </div>
+    <div class="client-logo-item">
+      <div class="client-logo-icon">🏛️</div>
+      <span>Government</span>
+    </div>
   </div>
-  <div class="pillars-grid">
-    <div class="pillar reveal" data-delay="0">
-      <span class="pillar-num">01</span>
-      <div class="pillar-icon">
-        <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
-      </div>
-      <h3>Proven Reliability</h3>
-      <p>20+ years and 500+ enterprise deployments give us the experience to deliver on time, within budget, every time. Our 99.9% SLA track record speaks for itself.</p>
+</div>
+
+<!-- Why Choose Us — Split Layout -->
+<section class="section why-section">
+  <div class="why-split">
+    <!-- Left: real photo with clip-path overlay -->
+    <div class="why-split-image reveal-left">
+      <img src="https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=800&q=80" alt="Data centre network infrastructure" width="800" height="500" loading="lazy" />
+      <div class="img-color-overlay"></div>
     </div>
-    <div class="pillar reveal" data-delay="120">
-      <span class="pillar-num">02</span>
-      <div class="pillar-icon">
-        <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+
+    <!-- Right: text content -->
+    <div class="why-split-content reveal-right">
+      <span class="section-label">Our Difference</span>
+      <h2>Why <span class="gradient-text-bc">Flair Network</span></h2>
+      <p class="lead">Trusted by enterprises across India for two decades. Here's what makes us different from every other infrastructure vendor.</p>
+      <div class="why-bullets">
+        <div class="why-bullet">
+          <div class="why-bullet-icon">
+            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+          </div>
+          <div class="why-bullet-text">
+            <h4>Proven Reliability</h4>
+            <p>500+ enterprise deployments across 20 years. 99.9% SLA track record that we're happy to put in writing.</p>
+          </div>
+        </div>
+        <div class="why-bullet">
+          <div class="why-bullet-icon">
+            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+          </div>
+          <div class="why-bullet-text">
+            <h4>End-to-End Ownership</h4>
+            <p>Design to deployment to managed support — one partner, full accountability. No fragmented vendors, no finger-pointing.</p>
+          </div>
+        </div>
+        <div class="why-bullet">
+          <div class="why-bullet-icon">
+            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M7 16V4m0 0L3 8m4-4l4 4m6 0v12m0 0l4-4m-4 4l-4-4"/></svg>
+          </div>
+          <div class="why-bullet-text">
+            <h4>Scalable by Design</h4>
+            <p>Every solution grows with your business — 50 to 5,000 users, 1 site to 50, without re-engineering from scratch.</p>
+          </div>
+        </div>
       </div>
-      <h3>End-to-End Ownership</h3>
-      <p>From design to deployment to managed support — we own the entire lifecycle. No fragmented vendors, no finger-pointing. One trusted partner, full accountability.</p>
-    </div>
-    <div class="pillar reveal" data-delay="240">
-      <span class="pillar-num">03</span>
-      <div class="pillar-icon">
-        <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M7 16V4m0 0L3 8m4-4l4 4m6 0v12m0 0l4-4m-4 4l-4-4"/></svg>
+      <div style="margin-top:2rem;">
+        <a href="about.html" class="btn btn-outline">Our Story →</a>
       </div>
-      <h3>Scalable by Design</h3>
-      <p>Every solution we build is architected to grow. Whether you're expanding from 50 to 5,000 users or adding new sites, your infrastructure scales without re-engineering.</p>
     </div>
   </div>
 </section>
@@ -661,8 +817,9 @@
 </div>
 
 <!-- Footer -->
-<footer class="footer">
-  <div class="footer-grid">
+<footer class="footer footer-with-bg">
+  <div class="footer-bg-img" style="background-image:url('https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1920&q=80');"></div>
+  <div class="footer-content footer-grid" style="display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:3rem;margin-bottom:3rem;">
     <div class="footer-brand">
       <a href="index.html" class="nav-logo">Flair<span>NS</span></a>
       <p>India's leading IT infrastructure partner since 2004. Building the networks that power modern enterprises.</p>
@@ -704,8 +861,8 @@
         <span>+91 20 XXXX XXXX</span>
       </div>
     </div>
-  </div>
-  <div class="footer-bottom">
+  </div><!-- /footer-content -->
+  <div class="footer-bottom" style="position:relative;z-index:1;">
     <p>&copy; 2004–2025 Flair Network Systems. All rights reserved.</p>
     <div class="footer-badges">
       <span class="footer-badge">ISO 9001</span>
